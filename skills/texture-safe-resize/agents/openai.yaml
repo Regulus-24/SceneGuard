@@ -1,0 +1,11 @@
+interface:
+  display_name: "Texture Safe Resize"
+  short_description: "Resize embedded GLB textures under approval"
+  default_prompt: "Use $texture-safe-resize to resize oversized embedded GLB textures safely."
+
+contract:
+  input_schema: "schemas/repair-execution-input.schema.json"
+  output_schema: "schemas/execution-report.schema.json"
+  dependency: "sceneguard.repair.resize_embedded_textures"
+  dependency_version: "sceneguard@0.1.0; Pillow==11.3.0; GLB 2.0; Python>=3.11"
+  timeout_seconds: "120"

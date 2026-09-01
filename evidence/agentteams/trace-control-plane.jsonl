@@ -1,0 +1,6 @@
+{"record":"runtime","framework":"AgentTeams/HiClaw","framework_version":"1.1.2","team":"sceneguard-real","phase":"Active","team_room":"matrix-room-redacted","leader_dm_room":"matrix-room-redacted","observed_at":"2026-08-11T23:20:00+08:00"}
+{"record":"topology","leader":"sceneguard-real-leader","leader_ready":true,"workers":["sceneguard-real-asset-auditor","sceneguard-real-repair-planner","sceneguard-real-repair-executor","sceneguard-real-regression-verifier"],"ready_workers":4,"total_workers":4}
+{"record":"leader_matrix_request","event_id":"$Ut3wlsIA8woQc7SzYpxkyknUicpwjE9bP8ceaFIkoiE","project_id":"agentteams-repair-real-20260811","requested_dag":["audit","plan","execute","verify"]}
+{"record":"leader_tool_result","tool":"projectflow","action":"create_project","ok":true,"project_id":"agentteams-repair-real-20260811","status":"active"}
+{"record":"leader_recovery","status":"operator_assisted","reason":"local 8B leader produced invalid plan_dag and message payload shapes; failed calls were rejected by AgentTeams schemas","controls":["no fabricated Worker result accepted","Matrix sender identity preserved","Worker terminal calls independently audited"]}
+{"record":"matrix_room_recovery","before":{"leader":"join","workers":"invite"},"after":{"leader":"join","workers":"join"},"result":"four Hermes Workers synchronized two rooms each"}

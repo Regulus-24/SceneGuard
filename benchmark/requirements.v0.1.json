@@ -1,0 +1,91 @@
+{
+  "schema_version": "0.1",
+  "registry_id": "sceneguard-formal-requirements-v0.1",
+  "source_materials": ["03_Agent_Identity清单", "04_Skill清单与接口契约", "05_Demo实现与评测计划", "06_开放开源与合规边界", "09_赛事要求覆盖矩阵"],
+  "requirements": [
+    {
+      "id": "AGENT.MIN_FUNCTIONS",
+      "title": "At least three distinct Agent functions and explicit identities",
+      "stage": "core",
+      "benchmark_checks": ["agent_skill.structure"],
+      "file_refs": ["at/team_spec.json", "agents/scene-guard-leader/Agent.md"]
+    },
+    {
+      "id": "AGENT.FRAMEWORK_RUNTIME",
+      "title": "AgentTeams is the collaboration basis and has real runtime evidence",
+      "stage": "release",
+      "benchmark_checks": ["agent_skill.structure"],
+      "file_refs": ["at/AGENTTEAMS_RUNBOOK.md", "at/team_spec.json"],
+      "external_evidence": ["evidence/agentteams/runtime.json", "evidence/agentteams/five-agent-supervisor-20260901.json"]
+    },
+    {
+      "id": "SKILL.CORE_CONTRACTS",
+      "title": "Core Skills declare bounded reusable contracts",
+      "stage": "core",
+      "benchmark_checks": ["agent_skill.structure", "contracts.schemas", "contracts.material_sync"],
+      "file_refs": ["schemas/registry.v0.1.json", "skills/repair-plan/SKILL.md", "skills/mesh-safe-repair/SKILL.md"]
+    },
+    {
+      "id": "API.MCP_EQUIVALENT",
+      "title": "HTTP fallback has versioned, authenticated, auditable and idempotent contracts",
+      "stage": "core",
+      "benchmark_checks": ["gateway.security", "gateway.request_contract", "contracts.api_docs"],
+      "file_refs": ["at/http_api.v0.1.json", "at/TOOL_MAPPING.md", "SECURITY.md"]
+    },
+    {
+      "id": "STATE.OBSERVABILITY",
+      "title": "Shared Job state, Trace and Metrics are runtime-proven",
+      "stage": "core",
+      "benchmark_checks": ["pipeline.five_gate_states"],
+      "file_refs": ["src/sceneguard/workspace.py", "src/sceneguard/pipeline.py"]
+    },
+    {
+      "id": "SAFETY.PROFILE_PLAN_APPROVAL",
+      "title": "Profile, PatchPlan, risk and L2 approval are fail-closed",
+      "stage": "core",
+      "benchmark_checks": ["pipeline.five_gate_states", "contracts.material_sync"],
+      "file_refs": ["profiles/web-realtime-v0.3-approval.json", "src/sceneguard/planner.py"]
+    },
+    {
+      "id": "SAFETY.ROLLBACK_RELEASE",
+      "title": "Failed verification rolls back and only verified candidates publish",
+      "stage": "core",
+      "benchmark_checks": ["pipeline.five_gate_states"],
+      "file_refs": ["src/sceneguard/regression.py", "src/sceneguard/workspace.py"]
+    },
+    {
+      "id": "EVAL.GOLDEN_REGRESSION",
+      "title": "Golden findings and regression suite are exact",
+      "stage": "core",
+      "benchmark_checks": ["tests.regression", "evaluation.golden", "evaluation.public_asset"],
+      "file_refs": ["evaluation/golden_findings.json", "samples/source_manifest.json", "samples/public/BoxVertexColors.source.json"]
+    },
+    {
+      "id": "COMPLIANCE.DISCLOSURE",
+      "title": "Dependencies, data, model/API and security boundaries are disclosed",
+      "stage": "core",
+      "benchmark_checks": ["compliance.disclosure"],
+      "file_refs": ["THIRD_PARTY_NOTICES.md", "DATA_SOURCES.md", "MODEL_DISCLOSURE.md", "SECURITY.md"]
+    },
+    {
+      "id": "DELIVERY.INTEGRITY",
+      "title": "Submission scope is hash-verified and excludes runtime/secrets",
+      "stage": "core",
+      "benchmark_checks": ["submission.manifest"],
+      "file_refs": ["scripts/build_submission_manifest.py"]
+    },
+    {
+      "id": "LOOP.BOUNDED_SUPERVISION",
+      "title": "Long-running benchmark sessions are bounded, resumable and fail-closed",
+      "stage": "core",
+      "benchmark_checks": ["loop.supervision"],
+      "file_refs": ["src/sceneguard/loop_session.py", "scripts/run_loop_supervisor.py", "scripts/preflight.py", "tests/test_loop_session.py", "tests/test_preflight.py", "benchmark/loop-supervisor-contract.v0.1.json"]
+    },
+    {
+      "id": "DELIVERY.TEAM_DECISIONS",
+      "title": "License, public project name, member information and roles are confirmed",
+      "stage": "release",
+      "external_evidence": ["evidence/team/release-decisions.json"]
+    }
+  ]
+}

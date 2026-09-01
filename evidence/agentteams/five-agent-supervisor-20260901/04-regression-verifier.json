@@ -1,0 +1,102 @@
+{
+  "ok": true,
+  "mode": "worker_run",
+  "agent_id": "regression-verifier",
+  "task_id": "semifinal-five-20260901-009-04",
+  "stage": "verify",
+  "skill_ids": [
+    "package-audit",
+    "mesh-validate",
+    "regression-verify"
+  ],
+  "decision": {
+    "ok": true,
+    "role": "regression-verifier",
+    "model": "qwen3.5:4b",
+    "tool": "verify_and_finalize",
+    "arguments": {
+      "job_id": "semifinal-five-20260901-009",
+      "profile": "web-realtime-v0.5-visual-demo.json",
+      "plan_id": "plan-343240a3244c"
+    },
+    "attempt_count": 1,
+    "decision_runtime": "inside_agentteams_container",
+    "decision_sha256": "e031f7c8c1ee60b754ec004f0239264c47cf05c265fc35aad2810eb4303c3798"
+  },
+  "tool_result": {
+    "ok": true,
+    "result": {
+      "job_id": "semifinal-five-20260901-009",
+      "stage": "FINALIZED",
+      "replayed": false,
+      "decision": {
+        "schema_version": "0.1",
+        "job_id": "semifinal-five-20260901-009",
+        "gate_state": "REPAIRED_PASS",
+        "reason": "independent regression verification passed",
+        "original_sha256": "8ddb8dfe88f07ecafed83619aaf736841ab47383d4d8ba16a3a13e537eaf1d55",
+        "working_sha256": "766c9476dcd62a96b604b86719f08ec025d55f3daac69e551cef04d58b293169",
+        "published": true,
+        "release": {
+          "schema_version": "0.1",
+          "job_id": "semifinal-five-20260901-009",
+          "gate_state": "REPAIRED_PASS",
+          "profile": "web-realtime@0.5-visual-demo",
+          "original_sha256": "8ddb8dfe88f07ecafed83619aaf736841ab47383d4d8ba16a3a13e537eaf1d55",
+          "published_sha256": "766c9476dcd62a96b604b86719f08ec025d55f3daac69e551cef04d58b293169",
+          "published_path": "published/asset.glb",
+          "regression_report": "artifacts/regression_report.json",
+          "published_at": "2026-09-01T07:18:20.492030+00:00"
+        },
+        "rollback": null,
+        "artifacts": {
+          "audit_report": "artifacts/audit_report.json",
+          "patch_plan": "artifacts/patch_plan.json",
+          "trace": "artifacts/trace.jsonl",
+          "gate_decision": "artifacts/gate_decision.json",
+          "metrics": "artifacts/metrics.json",
+          "approval_request": null,
+          "approval_record": null
+        },
+        "completed_at": "2026-09-01T07:18:20.494030+00:00"
+      }
+    },
+    "meta": {
+      "request_id": "req-7e075f3941304be2bb0526e038809ad2",
+      "input_sha256": "d0aeff6c9422c81543673d1c6c870cbd6ae87cddd7ee975bfab66eb5b4d0730d",
+      "output_sha256": "32d79f104b04978fa9fd2adf34df4e5ac3246c2b887adb8840b619585c51b17d"
+    }
+  },
+  "tool_result_sha256": "4255da971449f835f20293334a3b93d14135922cd2cc902d4806580a61fc3e50",
+  "submitted": {
+    "ok": true,
+    "action": "submit_task",
+    "task": {
+      "task_id": "semifinal-five-20260901-009-04",
+      "project_id": "semifinal-five-20260901-009",
+      "task_title": "Independently verify and finalize",
+      "assigned_to": "sgauto-regression-verifier",
+      "room_id": "room:!hBkcVV9fSCyavvO9as:matrix-local.hiclaw.io:18080",
+      "status": "submitted",
+      "depends_on": [
+        "semifinal-five-20260901-009-03"
+      ],
+      "assigned_at": "2026-09-01T07:18:14Z",
+      "acknowledged_at": "2026-09-01T07:18:18Z",
+      "submitted_at": "2026-09-01T07:18:20Z"
+    },
+    "synced": true,
+    "verified": true,
+    "result": {
+      "status": "SUCCESS",
+      "summary": "regression-verifier completed verify with validated machine evidence.",
+      "deliverables": [
+        "shared/tasks/semifinal-five-20260901-009-04/workspace/tool-result.json",
+        "shared/tasks/semifinal-five-20260901-009-04/workspace/skill-usage.json"
+      ],
+      "notes": [
+        "skills=package-audit,mesh-validate,regression-verify"
+      ]
+    }
+  }
+}

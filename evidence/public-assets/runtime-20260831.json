@@ -1,0 +1,44 @@
+{
+  "schema_version": "0.1",
+  "status": "PASS",
+  "observed_at": "2026-08-31T09:56:47Z",
+  "profile": "public-gltf-validation@0.1",
+  "mode": "read-only deterministic audit and publish-without-modification",
+  "source_project": "KhronosGroup/glTF-Sample-Assets",
+  "source_license_spdx": "CC0-1.0",
+  "assets": [
+    {
+      "asset": "samples/public/BoxVertexColors.glb",
+      "source_record": "samples/public/BoxVertexColors.source.json",
+      "job_id": "public-box-20260831",
+      "gate_state": "PASS",
+      "original_sha256": "9c48227f33b0ba2fbcf23b98ebf60d1c8ae0c6e6c5281e0aa3cc58affee10382",
+      "published_sha256": "9c48227f33b0ba2fbcf23b98ebf60d1c8ae0c6e6c5281e0aa3cc58affee10382",
+      "checks_incomplete": []
+    },
+    {
+      "asset": "samples/public/Avocado.glb",
+      "source_record": "samples/public/Avocado.source.json",
+      "job_id": "public-avocado-20260831",
+      "gate_state": "PASS",
+      "original_sha256": "ccc9c3ce56423720b09399c2351537207cd5a65f859f9e6e2f30922762f3abd4",
+      "published_sha256": "ccc9c3ce56423720b09399c2351537207cd5a65f859f9e6e2f30922762f3abd4",
+      "checks_incomplete": []
+    },
+    {
+      "asset": "samples/public/BoomBox.glb",
+      "source_record": "samples/public/BoomBox.source.json",
+      "job_id": "public-boombox-20260831",
+      "gate_state": "PASS",
+      "original_sha256": "f8b918445ebdd006768232205a62f5182d2208ca57f84c6ccc084943c0bc8f15",
+      "published_sha256": "f8b918445ebdd006768232205a62f5182d2208ca57f84c6ccc084943c0bc8f15",
+      "checks_incomplete": []
+    }
+  ],
+  "assertions": {
+    "all_source_hashes_matched": true,
+    "all_runtime_gates_passed": true,
+    "all_outputs_byte_identical": true,
+    "repair_operations_enabled": false
+  }
+}

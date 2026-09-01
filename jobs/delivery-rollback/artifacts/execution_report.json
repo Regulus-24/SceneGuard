@@ -1,0 +1,17 @@
+{
+  "operation": "remove_degenerate_triangles",
+  "before_sha256": "fe504e9b7676ae389d1a2c4fc3d233ead84ca66422f3f7ff792969808040648b",
+  "after_sha256": "eff3ef25397673282fccaf5a2b3c53b4389a65fb4efcfedb82dda76109f45b1b",
+  "removed_triangle_count": 1,
+  "changed_primitives": [
+    {
+      "mesh": 0,
+      "primitive": 0,
+      "old_index_count": 3,
+      "new_index_count": 0,
+      "removed_triangles": 1
+    }
+  ],
+  "bytes_before": 656,
+  "bytes_after": 636
+}

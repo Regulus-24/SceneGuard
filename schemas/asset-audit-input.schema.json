@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sceneguard.local/schemas/asset-audit-input.schema.json",
+  "title": "package-audit and mesh-validate Skill Input 0.1",
+  "type": "object",
+  "required": ["asset", "profile"],
+  "properties": {
+    "asset": {"type": "string", "minLength": 1},
+    "profile": {"type": "string", "minLength": 1},
+    "job_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,95}$"}
+  },
+  "additionalProperties": false
+}

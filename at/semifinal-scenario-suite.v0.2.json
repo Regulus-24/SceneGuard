@@ -1,0 +1,94 @@
+{
+  "schema_version": "0.2",
+  "suite_id": "sceneguard-semifinal-agentteams-v0.2",
+  "principle": "Use the minimum safe Skills per job; prove all seven Skills across the suite instead of forcing irrelevant calls into one run.",
+  "required_agents": [
+    "sceneguard_leader",
+    "asset_auditor",
+    "repair_planner",
+    "repair_executor",
+    "regression_verifier"
+  ],
+  "required_skills": [
+    "asset-profile",
+    "package-audit",
+    "mesh-validate",
+    "repair-plan",
+    "mesh-safe-repair",
+    "texture-safe-resize",
+    "regression-verify"
+  ],
+  "evidence_contract": {
+    "per_run": [
+      "run_id",
+      "project_id",
+      "four_task_ids_for_repair_runs",
+      "matrix_event_ids",
+      "job_id",
+      "profile_id_and_version",
+      "input_asset_sha256",
+      "candidate_or_published_sha256",
+      "plan_id_when_applicable",
+      "approval_actor_and_decision_when_applicable",
+      "skill_ids_and_versions",
+      "worker_native_tool_calls",
+      "artifact_hashes",
+      "terminal_gate",
+      "recovery_or_rollback_trace"
+    ],
+    "business_metrics": [
+      "baseline_manual_minutes",
+      "agent_end_to_end_ms",
+      "defect_false_release_count",
+      "repair_attempt_count",
+      "rework_count",
+      "human_approval_count",
+      "rollback_count",
+      "publish_incident_count",
+      "estimated_incident_cost"
+    ]
+  },
+  "scenarios": [
+    {
+      "id": "S1_PUBLIC_CLEAN",
+      "asset": "public/BoxVertexColors.glb",
+      "profile": "public-gltf-validation-v0.1.json",
+      "expected_gate": "PASS",
+      "agents_called": ["sceneguard_leader", "asset_auditor", "regression_verifier"],
+      "agents_not_called": {
+        "repair_planner": "no ERROR finding",
+        "repair_executor": "no repair is permitted for a clean asset"
+      },
+      "skills": ["asset-profile", "package-audit", "mesh-validate", "regression-verify"],
+      "purpose": "real license-cleared public asset intake and no-op release proof"
+    },
+    {
+      "id": "S2_L1_AUTONOMOUS_REPAIR",
+      "asset": "mixed_valid_degenerate.glb",
+      "profile": "web-realtime-v0.5-visual-demo.json",
+      "expected_gate": "REPAIRED_PASS",
+      "agents_called": ["sceneguard_leader", "asset_auditor", "repair_planner", "repair_executor", "regression_verifier"],
+      "skills": ["asset-profile", "package-audit", "mesh-validate", "repair-plan", "mesh-safe-repair", "regression-verify"],
+      "purpose": "primary zero-operator AgentTeams chain"
+    },
+    {
+      "id": "S3_L2_HUMAN_APPROVAL",
+      "asset": "oversized_texture.glb",
+      "profile": "web-realtime-v0.4-texture-approval.json",
+      "expected_gate_sequence": ["NEED_APPROVAL", "REPAIRED_PASS"],
+      "agents_called": ["sceneguard_leader", "asset_auditor", "repair_planner", "repair_executor", "regression_verifier"],
+      "skills": ["asset-profile", "package-audit", "mesh-validate", "repair-plan", "texture-safe-resize", "regression-verify"],
+      "purpose": "plan/hash-bound human approval and automatic continuation"
+    },
+    {
+      "id": "S4_CONTROLLED_ROLLBACK",
+      "asset": "mixed_valid_degenerate.glb",
+      "profile": "web-realtime-v0.5-visual-demo.json",
+      "fault_injection": "corrupt_after_execute",
+      "expected_gate": "FAILED_ROLLBACK",
+      "agents_called": ["sceneguard_leader", "asset_auditor", "repair_planner", "repair_executor", "regression_verifier"],
+      "skills": ["asset-profile", "package-audit", "mesh-validate", "repair-plan", "mesh-safe-repair", "regression-verify"],
+      "purpose": "fault recovery, zero publish and original-hash restoration proof"
+    }
+  ]
+}

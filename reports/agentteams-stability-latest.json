@@ -1,0 +1,150 @@
+{
+  "schema_version": "0.1",
+  "status": "PASS",
+  "mode": "validated five-Agent zero-operator Supervisor mode",
+  "sample_count": 5,
+  "minimum_passes": 5,
+  "passed_count": 5,
+  "failed_count": 0,
+  "success_rate": 1.0,
+  "consecutive_selected_runs_passed": true,
+  "timing_ms": {
+    "minimum": 72329,
+    "median_p50": 83344,
+    "p90_nearest_rank": 90250,
+    "maximum": 90250
+  },
+  "business_observation": {
+    "operator_actions_after_dispatch": 0,
+    "published_gate": "REPAIRED_PASS",
+    "manual_baseline_status": "PENDING_TEAM_MEASUREMENT",
+    "claim": "These measurements quantify automated cycle time, success and evidence coverage only. They do not claim labor savings or ROI before the manual baseline protocol is completed."
+  },
+  "runs": [
+    {
+      "run_id": "semifinal-five-20260901-005",
+      "passed": true,
+      "status": "COMPLETED",
+      "gate_state": "REPAIRED_PASS",
+      "duration_ms": 90250,
+      "plan_id": "plan-2bfeafbf25ed",
+      "result_sha256": "4cd1da7ba61957abd5c165f7d957d6a2e737d09d722a5ba9e1461f09a4f456fa",
+      "evidence_completeness": 1.0,
+      "checks": {
+        "completed": true,
+        "repaired_pass": true,
+        "five_agents": true,
+        "four_workers": true,
+        "zero_operator_actions": true,
+        "native_leader_decision": true,
+        "projectflow_created": true,
+        "four_taskflow_acceptances": true,
+        "native_worker_decisions": true,
+        "necessary_l1_skills": true,
+        "cross_report_invariants": true,
+        "artifact_hashes": true,
+        "duration_recorded": true
+      }
+    },
+    {
+      "run_id": "semifinal-five-20260901-006",
+      "passed": true,
+      "status": "COMPLETED",
+      "gate_state": "REPAIRED_PASS",
+      "duration_ms": 83344,
+      "plan_id": "plan-80c7c2e78311",
+      "result_sha256": "9e77b623fc890096ddc7c52d6a8f6ca016d223fade050fe08ede30aec3cd30a1",
+      "evidence_completeness": 1.0,
+      "checks": {
+        "completed": true,
+        "repaired_pass": true,
+        "five_agents": true,
+        "four_workers": true,
+        "zero_operator_actions": true,
+        "native_leader_decision": true,
+        "projectflow_created": true,
+        "four_taskflow_acceptances": true,
+        "native_worker_decisions": true,
+        "necessary_l1_skills": true,
+        "cross_report_invariants": true,
+        "artifact_hashes": true,
+        "duration_recorded": true
+      }
+    },
+    {
+      "run_id": "semifinal-five-20260901-007",
+      "passed": true,
+      "status": "COMPLETED",
+      "gate_state": "REPAIRED_PASS",
+      "duration_ms": 72329,
+      "plan_id": "plan-4e1d0bdf0f9c",
+      "result_sha256": "04838bee5a3e6d47876406b86872af4ea9b1f0224ca150aaa28cf30a7e3f8e8b",
+      "evidence_completeness": 1.0,
+      "checks": {
+        "completed": true,
+        "repaired_pass": true,
+        "five_agents": true,
+        "four_workers": true,
+        "zero_operator_actions": true,
+        "native_leader_decision": true,
+        "projectflow_created": true,
+        "four_taskflow_acceptances": true,
+        "native_worker_decisions": true,
+        "necessary_l1_skills": true,
+        "cross_report_invariants": true,
+        "artifact_hashes": true,
+        "duration_recorded": true
+      }
+    },
+    {
+      "run_id": "semifinal-five-20260901-008",
+      "passed": true,
+      "status": "COMPLETED",
+      "gate_state": "REPAIRED_PASS",
+      "duration_ms": 83750,
+      "plan_id": "plan-131037d97c51",
+      "result_sha256": "b2db70eed4d366810a4080ee867cd4db46b9c8861a31fd962e0851f8c2f32f51",
+      "evidence_completeness": 1.0,
+      "checks": {
+        "completed": true,
+        "repaired_pass": true,
+        "five_agents": true,
+        "four_workers": true,
+        "zero_operator_actions": true,
+        "native_leader_decision": true,
+        "projectflow_created": true,
+        "four_taskflow_acceptances": true,
+        "native_worker_decisions": true,
+        "necessary_l1_skills": true,
+        "cross_report_invariants": true,
+        "artifact_hashes": true,
+        "duration_recorded": true
+      }
+    },
+    {
+      "run_id": "semifinal-five-20260901-009",
+      "passed": true,
+      "status": "COMPLETED",
+      "gate_state": "REPAIRED_PASS",
+      "duration_ms": 74188,
+      "plan_id": "plan-343240a3244c",
+      "result_sha256": "4191100be26bd6c4c3cc21ddfcec9da4725230d642665b8b69aad7136fd0bb9e",
+      "evidence_completeness": 1.0,
+      "checks": {
+        "completed": true,
+        "repaired_pass": true,
+        "five_agents": true,
+        "four_workers": true,
+        "zero_operator_actions": true,
+        "native_leader_decision": true,
+        "projectflow_created": true,
+        "four_taskflow_acceptances": true,
+        "native_worker_decisions": true,
+        "necessary_l1_skills": true,
+        "cross_report_invariants": true,
+        "artifact_hashes": true,
+        "duration_recorded": true
+      }
+    }
+  ]
+}

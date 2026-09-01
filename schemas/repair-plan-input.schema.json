@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sceneguard.local/schemas/repair-plan-input.schema.json",
+  "title": "repair-plan Skill Input 0.1",
+  "type": "object",
+  "required": ["audit_report", "profile"],
+  "properties": {
+    "audit_report": {"$ref": "audit-report.schema.json"},
+    "profile": {"$ref": "goal-contract.schema.json"}
+  },
+  "additionalProperties": false
+}

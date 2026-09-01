@@ -1,0 +1,44 @@
+{
+  "schema_version": "0.1",
+  "contract_id": "sceneguard-loop-supervisor-v0.1",
+  "time_budget": {
+    "default_hours": 10,
+    "maximum_hours": 24,
+    "worker_timeout_max_seconds": 14400
+  },
+  "worker_interface": {
+    "explicit_argv": true,
+    "shell": false,
+    "context_environment_variables": [
+      "SCENEGUARD_LOOP_WORK_ITEM",
+      "SCENEGUARD_LOOP_SESSION_ID",
+      "SCENEGUARD_LOOP_CHECKPOINT"
+    ],
+    "stdout_stderr_persisted": false
+  },
+  "enforced_controls": {
+    "exclusive_session_lock": true,
+    "atomic_latest_receipt_and_state": true,
+    "immutable_iteration_receipts": true,
+    "pre_worker_recovery_archive": true,
+    "stop_on_lower_core_score": true,
+    "external_watch_without_benchmark_spin": true,
+    "fabricated_external_evidence_allowed": false
+  },
+  "honest_limitations": {
+    "built_in_codex_adapter": false,
+    "worker_filesystem_sandbox": false,
+    "worker_network_sandbox": false,
+    "automatic_source_restore": false,
+    "external_evidence_authenticity_beyond_contract_validation": false
+  },
+  "terminal_outcomes": [
+    "COMPLETE",
+    "AWAIT_EXTERNAL_EVIDENCE",
+    "STOP_ITERATION_LIMIT",
+    "STOP_TIME_BUDGET",
+    "AGENT_ACTION_REQUIRED",
+    "WORKER_FAILED",
+    "REGRESSION_DETECTED"
+  ]
+}

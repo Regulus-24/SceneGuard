@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sceneguard.local/schemas/gate-decision.schema.json",
+  "title": "SceneGuard Gate Decision 0.1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "job_id",
+    "gate_state",
+    "reason",
+    "original_sha256",
+    "working_sha256",
+    "published",
+    "release",
+    "rollback",
+    "artifacts",
+    "completed_at"
+  ],
+  "properties": {
+    "schema_version": {"const": "0.1"},
+    "job_id": {"type": "string", "minLength": 1},
+    "gate_state": {"enum": ["PASS", "REPAIRED_PASS", "NEED_APPROVAL", "FAILED_ROLLBACK", "REJECTED"]},
+    "reason": {"type": "string", "minLength": 1},
+    "original_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "working_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "published": {"type": "boolean"},
+    "release": {"type": ["object", "null"]},
+    "rollback": {"type": ["object", "null"]},
+    "artifacts": {
+      "type": "object",
+      "required": ["audit_report", "patch_plan", "trace", "gate_decision", "metrics"],
+      "properties": {
+        "audit_report": {"type": "string", "minLength": 1},
+        "patch_plan": {"type": "string", "minLength": 1},
+        "trace": {"type": "string", "minLength": 1},
+        "gate_decision": {"type": "string", "minLength": 1},
+        "metrics": {"type": "string", "minLength": 1},
+        "approval_request": {"type": ["string", "null"]},
+        "approval_record": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "completed_at": {"type": "string", "format": "date-time"}
+  },
+  "additionalProperties": false
+}

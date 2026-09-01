@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.1",
+  "job_id": "delivery-clean",
+  "gate_state": "PASS",
+  "reason": "asset passed without repair",
+  "original_sha256": "46f324f7c888b2f9ad5ec5aa1144e10814d183b9abecf6d2d342c0bc4153cb59",
+  "working_sha256": "46f324f7c888b2f9ad5ec5aa1144e10814d183b9abecf6d2d342c0bc4153cb59",
+  "published": true,
+  "release": {
+    "schema_version": "0.1",
+    "job_id": "delivery-clean",
+    "gate_state": "PASS",
+    "profile": "web-realtime@0.2",
+    "original_sha256": "46f324f7c888b2f9ad5ec5aa1144e10814d183b9abecf6d2d342c0bc4153cb59",
+    "published_sha256": "46f324f7c888b2f9ad5ec5aa1144e10814d183b9abecf6d2d342c0bc4153cb59",
+    "published_path": "published/asset.glb",
+    "regression_report": null,
+    "published_at": "2026-08-06T08:29:29.123310+00:00"
+  },
+  "rollback": null,
+  "artifacts": {
+    "audit_report": "artifacts/audit_report.json",
+    "patch_plan": "artifacts/patch_plan.json",
+    "trace": "artifacts/trace.jsonl",
+    "gate_decision": "artifacts/gate_decision.json"
+  },
+  "completed_at": "2026-08-06T08:29:29.124309+00:00"
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sceneguard.local/schemas/repair-execution-input.schema.json",
+  "title": "mesh-safe-repair Skill Input 0.1",
+  "type": "object",
+  "required": ["job_id", "working_asset", "patch_plan", "step_id"],
+  "properties": {
+    "job_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"},
+    "working_asset": {"type": "string", "minLength": 1},
+    "patch_plan": {"$ref": "patch-plan.schema.json"},
+    "step_id": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": false
+}

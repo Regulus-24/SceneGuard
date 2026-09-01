@@ -1,0 +1,42 @@
+{
+  "schema_version": "0.1",
+  "job_id": "delivery-rollback",
+  "asset": {
+    "path": "C:\\Users\\Administrator\\Desktop\\Agent infra\\Agent比赛\\Agent比赛\\sceneguard\\jobs\\delivery-rollback\\working\\candidate.glb",
+    "sha256": "09fb340b31ee8f74f50bb878bf68baccb800df689ef7b473dcb414b218ad9613"
+  },
+  "profile": {
+    "id": "web-realtime",
+    "version": "0.2"
+  },
+  "measurements": {
+    "file_bytes": 652
+  },
+  "findings": [
+    {
+      "finding_id": "f-0001",
+      "rule_id": "package.valid_glb",
+      "severity": "ERROR",
+      "message": "header declares 636 bytes but file contains 652",
+      "location": {},
+      "observed": "LENGTH_MISMATCH",
+      "expected": "valid GLB 2.0",
+      "evidence": {},
+      "repairability": "MANUAL_ONLY",
+      "confidence": 1.0
+    }
+  ],
+  "checks_completed": [],
+  "checks_incomplete": [
+    "package.single_file",
+    "package.bounds",
+    "package.references",
+    "profile.budgets"
+  ],
+  "summary": {
+    "gate_state": "REJECTED",
+    "error_count": 1,
+    "warning_count": 0
+  },
+  "created_at": "2026-08-06T08:29:29.343938+00:00"
+}

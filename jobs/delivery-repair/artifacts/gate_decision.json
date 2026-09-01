@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.1",
+  "job_id": "delivery-repair",
+  "gate_state": "REPAIRED_PASS",
+  "reason": "removed 1 degenerate triangle(s) and passed regression",
+  "original_sha256": "fe504e9b7676ae389d1a2c4fc3d233ead84ca66422f3f7ff792969808040648b",
+  "working_sha256": "eff3ef25397673282fccaf5a2b3c53b4389a65fb4efcfedb82dda76109f45b1b",
+  "published": true,
+  "release": {
+    "schema_version": "0.1",
+    "job_id": "delivery-repair",
+    "gate_state": "REPAIRED_PASS",
+    "profile": "web-realtime@0.2",
+    "original_sha256": "fe504e9b7676ae389d1a2c4fc3d233ead84ca66422f3f7ff792969808040648b",
+    "published_sha256": "eff3ef25397673282fccaf5a2b3c53b4389a65fb4efcfedb82dda76109f45b1b",
+    "published_path": "published/asset.glb",
+    "regression_report": "artifacts/regression_report.json",
+    "published_at": "2026-08-06T08:29:29.235431+00:00"
+  },
+  "rollback": null,
+  "artifacts": {
+    "audit_report": "artifacts/audit_report.json",
+    "patch_plan": "artifacts/patch_plan.json",
+    "trace": "artifacts/trace.jsonl",
+    "gate_decision": "artifacts/gate_decision.json"
+  },
+  "completed_at": "2026-08-06T08:29:29.236431+00:00"
+}

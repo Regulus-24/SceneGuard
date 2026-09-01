@@ -1,0 +1,11 @@
+{
+  "task_id": "SG-P0-AUTO-20260825-001",
+  "title": "SceneGuard P0 zero-operator autonomous repair acceptance",
+  "type": "finite",
+  "assigned_to": "sceneguard-real-leader",
+  "delegated_to_team": "sceneguard-real",
+  "job_id": "agentteams-auto-20260825-001",
+  "status": "assigned",
+  "created_at": "2026-08-25T10:58:43+08:00",
+  "acceptance_contract": "at/automation-contract.v0.1.json"
+}

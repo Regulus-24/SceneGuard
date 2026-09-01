@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sceneguard.local/schemas/pipeline-run-input.schema.json",
+  "title": "SceneGuard Pipeline Run Input 0.1",
+  "type": "object",
+  "required": ["asset", "profile"],
+  "properties": {
+    "asset": {"type": "string", "minLength": 1},
+    "profile": {"type": "string", "minLength": 1},
+    "job_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,95}$"},
+    "auto_repair": {"type": "boolean"},
+    "fault_injection": {
+      "type": ["string", "null"],
+      "enum": ["tamper_before_execute", "tool_error_after_execute", "corrupt_after_execute", null]
+    },
+    "approval_decision": {"type": ["string", "null"], "enum": ["APPROVE", "REJECT", null]},
+    "approval_actor": {"type": "string", "minLength": 1, "maxLength": 128}
+  },
+  "additionalProperties": false
+}

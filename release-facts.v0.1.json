@@ -1,0 +1,78 @@
+{
+  "schema_version": "0.1",
+  "as_of": "2026-09-01",
+  "competition": {
+    "submission_pool_claim": "800+",
+    "placement": "TOP_30",
+    "claim_source": "team-provided competition result",
+    "official_track_url": "https://www.goaihz.com/tracks?track=infra",
+    "skill_requirement": "Skill is mandatory; Alibaba Cloud official cloud Skills are optional alternatives to reusable project-defined Skills"
+  },
+  "project": {
+    "name": "SceneGuard",
+    "package_version": "0.1.0",
+    "python": ">=3.11",
+    "supported_input": "single-file GLB 2.0"
+  },
+  "inventory": {
+    "http_routes": 15,
+    "schemas": 13,
+    "skills": 7,
+    "samples_total": 15,
+    "samples_self_created": 12,
+    "samples_public": 3,
+    "automated_tests_baseline": 103,
+    "repair_operations": [
+      "remove_degenerate_triangles",
+      "resize_embedded_textures"
+    ]
+  },
+  "agentteams": {
+    "framework": "AgentTeams/HiClaw",
+    "framework_version": "1.1.2",
+    "leader_runtime": "CoPaw",
+    "worker_runtime": "Hermes Agent v0.10.0",
+    "team": "sceneguard-real",
+    "team_leaders": 1,
+    "business_workers": 4,
+    "model_provider": "local Ollama through HiClaw AI Gateway",
+    "model": "qwen3:8b",
+    "retained_run_autonomy": "OPERATOR_ASSISTED",
+    "autonomous_acceptance_contract": "at/automation-contract.v0.1.json",
+    "native_teamleader_attempts_total": 8,
+    "native_teamleader_attempts_passed": 0,
+    "latest_native_teamleader_failure": "THINKING_ONLY_NO_TOOL_CALL",
+    "latest_native_teamleader_evidence": "evidence/agentteams/semifinal-native-attempts-20260831.json",
+    "validated_supervisor_team": "sceneguard-auto-v1",
+    "validated_supervisor_leader_model": "qwen3.5:9b",
+    "validated_supervisor_worker_model": "qwen3.5:4b",
+    "validated_supervisor_attempts": 5,
+    "validated_supervisor_passed": 5,
+    "validated_supervisor_success_rate": 1.0,
+    "validated_supervisor_gate": "REPAIRED_PASS",
+    "validated_supervisor_operator_actions_after_dispatch": 0,
+    "validated_supervisor_p50_ms": 83344,
+    "validated_supervisor_p90_ms": 90250,
+    "validated_supervisor_evidence": "evidence/agentteams/five-agent-supervisor-20260901.json",
+    "validated_supervisor_stability_report": "reports/agentteams-stability-latest.json",
+    "validated_supervisor_claim_boundary": "all five model decisions and business actions ran inside AgentTeams containers; the host locked topology and enforced the finite state machine; not free-form native Matrix orchestration"
+  },
+  "dependencies": [
+    {
+      "name": "Pillow",
+      "version": "11.3.0",
+      "purpose": "embedded PNG/JPEG texture decoding and resizing",
+      "license": "HPND"
+    }
+  ],
+  "release": {
+    "license_status": "FROZEN",
+    "license_spdx": "Apache-2.0",
+    "license_file": "LICENSE",
+    "license_conflict": "RESOLVED: the team replaced the 2026-08-25 MIT decision with Apache-2.0 on 2026-08-31 in response to semifinal judge guidance; future deck, video and code package claims must use Apache-2.0",
+    "official_skill_status": "OPTIONAL_NOT_REQUIRED_BY_GOAI",
+    "iam_status": "DEMO_BEARER_ONLY",
+    "native_mcp_status": "NOT_IMPLEMENTED",
+    "otel_genai_status": "NOT_MAPPED"
+  }
+}

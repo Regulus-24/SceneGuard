@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sceneguard.local/schemas/regression-report.schema.json",
+  "title": "SceneGuard Regression Report 0.1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "original_sha256",
+    "candidate_sha256",
+    "target_rules",
+    "resolved_target_rules",
+    "unresolved_target_rules",
+    "new_error_findings",
+    "required_checks_complete",
+    "repair_attempted",
+    "gate_state"
+  ],
+  "properties": {
+    "schema_version": {"const": "0.1"},
+    "original_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "candidate_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "target_rules": {"$ref": "#/$defs/rules"},
+    "resolved_target_rules": {"$ref": "#/$defs/rules"},
+    "unresolved_target_rules": {"$ref": "#/$defs/rules"},
+    "new_error_findings": {"type": "array", "items": {"$ref": "finding.schema.json"}},
+    "required_checks_complete": {"type": "boolean"},
+    "repair_attempted": {"type": "boolean"},
+    "gate_state": {"enum": ["PASS", "REPAIRED_PASS", "FAILED_ROLLBACK", "REJECTED"]}
+  },
+  "$defs": {
+    "rules": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": false
+}

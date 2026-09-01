@@ -1,0 +1,102 @@
+{
+  "schema_version": "0.1",
+  "status": "PASS",
+  "run_id": "sceneguard-supervised-p0-20260825-004",
+  "job_id": "agentteams-auto-p0-004",
+  "observed_at": "2026-08-25T07:52:30.759569+00:00",
+  "mode": "AgentTeams workers with deterministic validated supervisor",
+  "framework": "AgentTeams/HiClaw",
+  "framework_version": "1.1.2",
+  "operator_actions_after_dispatch": 0,
+  "model_provider": "local Ollama",
+  "model": "qwen3.5:4b",
+  "model_interface": "Ollama native tool calling",
+  "team": "sceneguard-auto-v1",
+  "gate_state": "REPAIRED_PASS",
+  "duration_ms": 10703,
+  "stages": [
+    {
+      "role": "asset-auditor",
+      "worker": "sgauto-asset-auditor",
+      "native_tool_call": "create_scene_job",
+      "model_attempts": 1,
+      "decision_runtime": "inside_agentteams_worker",
+      "result_sha256": "e3d11894996ebb8efc5e79b318ff0c1cc0cd7639ae01a8d781789db352e887e9"
+    },
+    {
+      "role": "repair-planner",
+      "worker": "sgauto-repair-planner",
+      "native_tool_call": "freeze_patch_plan",
+      "model_attempts": 1,
+      "decision_runtime": "inside_agentteams_worker",
+      "result_sha256": "7be2931184644dc3811e6263be913936bf0e1b03825d10b4f3c9f3e39a6fa00b"
+    },
+    {
+      "role": "repair-executor",
+      "worker": "sgauto-repair-executor",
+      "native_tool_call": "execute_frozen_plan",
+      "model_attempts": 1,
+      "decision_runtime": "inside_agentteams_worker",
+      "result_sha256": "81ad3995ca6920a2a890ce10766c260839629cd5c4234693be90bfc8790accf9"
+    },
+    {
+      "role": "regression-verifier",
+      "worker": "sgauto-regression-verifier",
+      "native_tool_call": "verify_and_finalize",
+      "model_attempts": 1,
+      "decision_runtime": "inside_agentteams_worker",
+      "result_sha256": "3b756ddeed0a00dc0a5004a6cd2480d5e39c2e65f1ef74f06164315dbcdbbcf8"
+    }
+  ],
+  "artifacts": {
+    "plan": {
+      "plan_id": "plan-858cecfaacd5",
+      "asset_sha256": "fe504e9b7676ae389d1a2c4fc3d233ead84ca66422f3f7ff792969808040648b",
+      "profile": "web-realtime@0.2",
+      "state": "READY",
+      "operation": "remove_degenerate_triangles",
+      "risk_level": "L1",
+      "approval_required": false
+    },
+    "execution": {
+      "state": "SUCCEEDED",
+      "plan_id": "plan-858cecfaacd5",
+      "step_id": "step-001",
+      "operation": "remove_degenerate_triangles",
+      "removed_triangle_count": 1,
+      "before_sha256": "fe504e9b7676ae389d1a2c4fc3d233ead84ca66422f3f7ff792969808040648b",
+      "after_sha256": "eff3ef25397673282fccaf5a2b3c53b4389a65fb4efcfedb82dda76109f45b1b",
+      "checkpoint_sha256": "fe504e9b7676ae389d1a2c4fc3d233ead84ca66422f3f7ff792969808040648b"
+    },
+    "regression": {
+      "candidate_sha256": "eff3ef25397673282fccaf5a2b3c53b4389a65fb4efcfedb82dda76109f45b1b",
+      "unresolved_target_rules": [],
+      "new_error_findings": [],
+      "required_checks_complete": true,
+      "gate_state": "REPAIRED_PASS"
+    },
+    "release": {
+      "published": true,
+      "gate_state": "REPAIRED_PASS",
+      "published_sha256": "eff3ef25397673282fccaf5a2b3c53b4389a65fb4efcfedb82dda76109f45b1b"
+    }
+  },
+  "invariants": {
+    "plan_id_frozen": true,
+    "execution_to_regression_hash": true,
+    "gate_agrees": true,
+    "published_hash_agrees": true,
+    "terminal_repaired_pass": true
+  },
+  "trace_refs": [
+    "evidence/agentteams/trace-supervisor-20260825.jsonl",
+    "evidence/agentteams/trace-staged-job-20260825.jsonl"
+  ],
+  "native_teamleader_disclosure": {
+    "status": "FAILED_BEFORE_PROJECT_CREATION",
+    "attempts": 2,
+    "reason": "local models emitted prose or pseudo tool syntax instead of native HiClaw tool-call events",
+    "claim_boundary": "This PASS proves autonomous validated Supervisor mode, not native TeamLeader DAG completion."
+  },
+  "secret_scan_passed": true
+}

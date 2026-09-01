@@ -1,0 +1,22 @@
+{
+  "profile_id": "web-realtime",
+  "version": "0.2",
+  "description": "Public demo profile with one tested L1 repair. Values are SceneGuard demo defaults, not enterprise production thresholds.",
+  "rules": {
+    "max_file_bytes": 1048576,
+    "max_triangles": 1,
+    "max_texture_dimension": 1024,
+    "allow_external_uris": false,
+    "require_embedded_buffers": true
+  },
+  "repair_policy": {
+    "allowed_operations": ["remove_degenerate_triangles"],
+    "operation_risk_levels": {
+      "remove_degenerate_triangles": "L1"
+    },
+    "auto_execute_risk_levels": ["L0", "L1"],
+    "approval_required_risk_levels": ["L2"],
+    "denied_risk_levels": ["L3"],
+    "note": "Only indexed TRIANGLES primitives with regular embedded accessors are eligible. All other repairs fail closed."
+  }
+}

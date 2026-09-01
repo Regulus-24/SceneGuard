@@ -1,0 +1,129 @@
+{
+  "schema_version": "0.1",
+  "benchmark_id": "sceneguard-release-v0.1",
+  "description": "Machine-checkable acceptance gates compiled from formal materials 03, 04, 05, 06 and 09.",
+  "profiles": {
+    "golden": "profiles/web-realtime-v0.1.json",
+    "repair": "profiles/web-realtime-v0.2.json"
+  },
+  "golden_manifest": "evaluation/golden_findings.json",
+  "minimum_golden_sample_count": 15,
+  "minimum_expected_error_count": 20,
+  "public_asset_benchmark": {
+    "asset": "samples/public/BoxVertexColors.glb",
+    "source_record": "samples/public/BoxVertexColors.source.json",
+    "profile": "profiles/public-gltf-validation-v0.1.json",
+    "expected_sha256": "9c48227f33b0ba2fbcf23b98ebf60d1c8ae0c6e6c5281e0aa3cc58affee10382",
+    "required_license_spdx": "CC0-1.0"
+  },
+  "requirements_registry": "benchmark/requirements.v0.1.json",
+  "schema_registry": "schemas/registry.v0.1.json",
+  "api_contract": "at/http_api.v0.1.json",
+  "submission_manifest": "reports/submission-manifest.json",
+  "minimum_test_count": 79,
+  "repair_benchmark": {
+    "operation": "remove_degenerate_triangles",
+    "minimum_attempts": 5,
+    "minimum_success_rate": 0.9,
+    "assets": [
+      "samples/degenerate_triangle.glb",
+      "samples/degenerate_collinear.glb",
+      "samples/degenerate_duplicate_positions.glb",
+      "samples/degenerate_repeated_u8.glb",
+      "samples/degenerate_repeated_u32.glb"
+    ]
+  },
+  "rollback_benchmark": {
+    "minimum_failure_modes": 3,
+    "required_success_rate": 1.0,
+    "asset": "samples/degenerate_triangle.glb",
+    "fault_injections": [
+      "tamper_before_execute",
+      "tool_error_after_execute",
+      "corrupt_after_execute"
+    ]
+  },
+  "required_gate_cases": {
+    "clean": {
+      "asset": "samples/clean_triangle.glb",
+      "expected_state": "PASS"
+    },
+    "repair": {
+      "asset": "samples/degenerate_triangle.glb",
+      "expected_state": "REPAIRED_PASS"
+    },
+    "approval_pending": {
+      "asset": "samples/degenerate_triangle.glb",
+      "expected_state": "NEED_APPROVAL",
+      "profile": "profiles/web-realtime-v0.3-approval.json"
+    },
+    "approval_rejected": {
+      "asset": "samples/degenerate_triangle.glb",
+      "expected_state": "REJECTED",
+      "profile": "profiles/web-realtime-v0.3-approval.json",
+      "approval_decision": "REJECT"
+    },
+    "approval_approved": {
+      "asset": "samples/degenerate_triangle.glb",
+      "expected_state": "REPAIRED_PASS",
+      "profile": "profiles/web-realtime-v0.3-approval.json",
+      "approval_decision": "APPROVE"
+    },
+    "texture_approval_pending": {
+      "asset": "samples/oversized_texture.glb",
+      "expected_state": "NEED_APPROVAL",
+      "profile": "profiles/web-realtime-v0.4-texture-approval.json"
+    },
+    "texture_approval_rejected": {
+      "asset": "samples/oversized_texture.glb",
+      "expected_state": "REJECTED",
+      "profile": "profiles/web-realtime-v0.4-texture-approval.json",
+      "approval_decision": "REJECT"
+    },
+    "texture_approval_approved": {
+      "asset": "samples/oversized_texture.glb",
+      "expected_state": "REPAIRED_PASS",
+      "profile": "profiles/web-realtime-v0.4-texture-approval.json",
+      "approval_decision": "APPROVE"
+    },
+    "rollback": {
+      "asset": "samples/degenerate_triangle.glb",
+      "expected_state": "FAILED_ROLLBACK",
+      "fault_injection": "corrupt_after_execute"
+    },
+    "rejected": {
+      "asset": "samples/external_buffer.glb",
+      "expected_state": "REJECTED"
+    }
+  },
+  "required_agents": [
+    "scene-guard-leader",
+    "asset-auditor",
+    "repair-planner",
+    "repair-executor",
+    "regression-verifier"
+  ],
+  "required_core_skills": [
+    "asset-profile",
+    "package-audit",
+    "mesh-validate",
+    "repair-plan",
+    "mesh-safe-repair",
+    "texture-safe-resize",
+    "regression-verify"
+  ],
+  "required_release_evidence": [
+    "evidence/agentteams/runtime.json",
+    "evidence/agentteams/five-agent-supervisor-20260901.json",
+    "evidence/team/release-decisions.json"
+  ],
+  "stop_policy": {
+    "max_iterations": 50,
+    "max_consecutive_no_improvement": 3,
+    "max_consecutive_same_failure": 3,
+    "default_session_hours": 10,
+    "max_session_hours": 24,
+    "receipt_max_command_tail_lines": 20,
+    "external_blockers_require_human_or_environment_change": true
+  }
+}

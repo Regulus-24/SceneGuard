@@ -1,0 +1,54 @@
+{
+  "schema_version": "0.2",
+  "team": "sceneguard-real",
+  "framework": "AgentTeams/HiClaw",
+  "identity_count": 5,
+  "identities": [
+    {
+      "agent_id": "scene-guard-leader",
+      "runtime_role": "team_leader",
+      "responsibility": "freeze Goal/Profile/input hash, create Project and four Tasks, route dependencies, decide terminal handoff",
+      "allowed_skills": ["asset-profile"],
+      "forbidden_actions": ["execute SceneGuard business tools", "rewrite Worker evidence", "approve L2 repairs"],
+      "success_evidence": ["project_id", "four_task_ids", "matrix_event_ids", "terminal_result"]
+    },
+    {
+      "agent_id": "asset-auditor",
+      "runtime_role": "worker",
+      "responsibility": "create isolated Job and perform read-only package/mesh audit",
+      "allowed_skills": ["package-audit", "mesh-validate"],
+      "forbidden_actions": ["plan repair", "mutate asset", "publish"],
+      "success_evidence": ["job_id", "asset_sha256", "audit_report", "finding_ids"]
+    },
+    {
+      "agent_id": "repair-planner",
+      "runtime_role": "worker",
+      "responsibility": "convert bound Findings and Profile policy into an immutable PatchPlan",
+      "allowed_skills": ["repair-plan"],
+      "forbidden_actions": ["execute plan", "alter Profile", "self-approve"],
+      "success_evidence": ["plan_id", "bound_asset_sha256", "profile_id_version", "approval_requirement"]
+    },
+    {
+      "agent_id": "repair-executor",
+      "runtime_role": "worker",
+      "responsibility": "execute only approved Profile-whitelist operations on the Job working copy",
+      "allowed_skills": ["mesh-safe-repair", "texture-safe-resize"],
+      "forbidden_actions": ["edit original", "execute unbound plan", "verify own release"],
+      "success_evidence": ["tool_call_id", "operation", "before_sha256", "after_sha256", "checkpoint_sha256"]
+    },
+    {
+      "agent_id": "regression-verifier",
+      "runtime_role": "worker",
+      "responsibility": "independently re-audit candidate, compare invariants and publish or force rollback",
+      "allowed_skills": ["regression-verify"],
+      "forbidden_actions": ["repair candidate", "ignore incomplete checks", "publish failed candidate"],
+      "success_evidence": ["regression_report", "gate_decision", "published_sha256_or_rollback_sha256"]
+    }
+  ],
+  "separation_of_duties": [
+    "planner != executor",
+    "executor != verifier",
+    "leader coordinates but does not execute business tools",
+    "L2 approval actor is human and is not any Agent"
+  ]
+}

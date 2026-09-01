@@ -1,0 +1,16 @@
+{
+  "schema_version": "0.1",
+  "status": "FAIL",
+  "autonomous": false,
+  "operator_actions_after_dispatch": 0,
+  "team": "sceneguard-real",
+  "task_id": "SG-P0-AUTO-20260825-001",
+  "job_id": "agentteams-auto-20260825-001",
+  "failure_code": "TEAM_SCOPED_TASK_NOT_FOUND",
+  "root_cause": "Manager staged the parent task only in global shared storage, while the current TeamLeader filesync contract resolves shared/tasks inside team-isolated storage.",
+  "roles_completed": [],
+  "promotable_to_autonomous_evidence": false,
+  "trace_refs": [
+    "evidence/agentteams/trace-autonomous-attempt-001.jsonl"
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sceneguard.local/schemas/execution-report.schema.json",
+  "title": "SceneGuard Repair Execution Report 0.1",
+  "oneOf": [
+    {"$ref": "#/$defs/meshRepair"},
+    {"$ref": "#/$defs/textureResize"}
+  ],
+  "$defs": {
+    "hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "meshRepair": {
+      "type": "object",
+      "required": ["operation", "before_sha256", "after_sha256", "removed_triangle_count", "changed_primitives", "bytes_before", "bytes_after"],
+      "properties": {
+        "operation": {"const": "remove_degenerate_triangles"},
+        "before_sha256": {"$ref": "#/$defs/hash"},
+        "after_sha256": {"$ref": "#/$defs/hash"},
+        "removed_triangle_count": {"type": "integer", "minimum": 1},
+        "changed_primitives": {
+          "type": "array", "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["mesh", "primitive", "old_index_count", "new_index_count", "removed_triangles"],
+            "properties": {
+              "mesh": {"type": "integer", "minimum": 0}, "primitive": {"type": "integer", "minimum": 0},
+              "old_index_count": {"type": "integer", "minimum": 0}, "new_index_count": {"type": "integer", "minimum": 0},
+              "removed_triangles": {"type": "integer", "minimum": 1}
+            },
+            "additionalProperties": false
+          }
+        },
+        "bytes_before": {"type": "integer", "minimum": 1}, "bytes_after": {"type": "integer", "minimum": 1}
+      },
+      "additionalProperties": false
+    },
+    "textureResize": {
+      "type": "object",
+      "required": ["operation", "before_sha256", "after_sha256", "resized_image_count", "changed_images", "max_dimension", "bytes_before", "bytes_after"],
+      "properties": {
+        "operation": {"const": "resize_embedded_textures"},
+        "before_sha256": {"$ref": "#/$defs/hash"},
+        "after_sha256": {"$ref": "#/$defs/hash"},
+        "resized_image_count": {"type": "integer", "minimum": 1},
+        "changed_images": {
+          "type": "array", "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["image", "mime_type", "old_width", "old_height", "new_width", "new_height", "old_bytes", "new_bytes"],
+            "properties": {
+              "image": {"type": "integer", "minimum": 0}, "mime_type": {"enum": ["image/png", "image/jpeg"]},
+              "old_width": {"type": "integer", "minimum": 1}, "old_height": {"type": "integer", "minimum": 1},
+              "new_width": {"type": "integer", "minimum": 1}, "new_height": {"type": "integer", "minimum": 1},
+              "old_bytes": {"type": "integer", "minimum": 1}, "new_bytes": {"type": "integer", "minimum": 1}
+            },
+            "additionalProperties": false
+          }
+        },
+        "max_dimension": {"type": "integer", "minimum": 1},
+        "bytes_before": {"type": "integer", "minimum": 1}, "bytes_after": {"type": "integer", "minimum": 1}
+      },
+      "additionalProperties": false
+    }
+  }
+}

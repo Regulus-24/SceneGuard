@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sceneguard.local/schemas/registry.v0.1.json",
+  "title": "SceneGuard Schema and Skill Contract Registry 0.1",
+  "schema_version": "0.1",
+  "contracts": [
+    {"id": "GoalContract", "path": "schemas/goal-contract.schema.json"},
+    {"id": "Finding", "path": "schemas/finding.schema.json"},
+    {"id": "AuditReport", "path": "schemas/audit-report.schema.json"},
+    {"id": "PatchPlan", "path": "schemas/patch-plan.schema.json"},
+    {"id": "ExecutionReport", "path": "schemas/execution-report.schema.json"},
+    {"id": "RegressionReport", "path": "schemas/regression-report.schema.json"},
+    {"id": "GateDecision", "path": "schemas/gate-decision.schema.json"},
+    {"id": "AssetProfileInput", "path": "schemas/asset-profile-input.schema.json"},
+    {"id": "AssetAuditInput", "path": "schemas/asset-audit-input.schema.json"},
+    {"id": "PipelineRunInput", "path": "schemas/pipeline-run-input.schema.json"},
+    {"id": "RepairPlanInput", "path": "schemas/repair-plan-input.schema.json"},
+    {"id": "RepairExecutionInput", "path": "schemas/repair-execution-input.schema.json"},
+    {"id": "RegressionVerifyInput", "path": "schemas/regression-verify-input.schema.json"}
+  ],
+  "skills": [
+    {
+      "id": "asset-profile",
+      "input_schema": "schemas/asset-profile-input.schema.json",
+      "output_schema": "schemas/goal-contract.schema.json",
+      "dependency": "sceneguard.profile.QualityProfile",
+      "dependency_version": "sceneguard@0.1.0; Python>=3.11",
+      "timeout_seconds": 10
+    },
+    {
+      "id": "package-audit",
+      "input_schema": "schemas/asset-audit-input.schema.json",
+      "output_schema": "schemas/audit-report.schema.json",
+      "dependency": "sceneguard.audit.AssetAuditor",
+      "dependency_version": "sceneguard@0.1.0; GLB 2.0; Python>=3.11",
+      "timeout_seconds": 60
+    },
+    {
+      "id": "mesh-validate",
+      "input_schema": "schemas/asset-audit-input.schema.json",
+      "output_schema": "schemas/audit-report.schema.json",
+      "dependency": "sceneguard.audit.AssetAuditor",
+      "dependency_version": "sceneguard@0.1.0; GLB 2.0; Python>=3.11",
+      "timeout_seconds": 60
+    },
+    {
+      "id": "repair-plan",
+      "input_schema": "schemas/repair-plan-input.schema.json",
+      "output_schema": "schemas/patch-plan.schema.json",
+      "dependency": "sceneguard.planner.build_patch_plan",
+      "dependency_version": "sceneguard@0.1.0; Python>=3.11",
+      "timeout_seconds": 10
+    },
+    {
+      "id": "mesh-safe-repair",
+      "input_schema": "schemas/repair-execution-input.schema.json",
+      "output_schema": "schemas/execution-report.schema.json",
+      "dependency": "sceneguard.repair.remove_degenerate_triangles",
+      "dependency_version": "sceneguard@0.1.0; GLB 2.0; Python>=3.11",
+      "timeout_seconds": 60
+    },
+    {
+      "id": "texture-safe-resize",
+      "input_schema": "schemas/repair-execution-input.schema.json",
+      "output_schema": "schemas/execution-report.schema.json",
+      "dependency": "sceneguard.repair.resize_embedded_textures",
+      "dependency_version": "sceneguard@0.1.0; Pillow==11.3.0; GLB 2.0; Python>=3.11",
+      "timeout_seconds": 120
+    },
+    {
+      "id": "regression-verify",
+      "input_schema": "schemas/regression-verify-input.schema.json",
+      "output_schema": "schemas/regression-report.schema.json",
+      "dependency": "sceneguard.regression.compare_audits",
+      "dependency_version": "sceneguard@0.1.0; Python>=3.11",
+      "timeout_seconds": 60
+    }
+  ]
+}

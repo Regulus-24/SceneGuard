@@ -1,0 +1,82 @@
+{
+  "team": {
+    "name": "sceneguard-real",
+    "version": "0.2.0",
+    "description": "GLB quality gate and controlled-repair AgentTeams PoC for GOAI Agent Infra.",
+    "framework": "AgentTeams (HiClaw)",
+    "creation_policy": {
+      "mode": "serial",
+      "order": [
+        "asset_auditor",
+        "repair_planner",
+        "repair_executor",
+        "regression_verifier",
+        "team"
+      ],
+      "reason": "Avoid concurrent Worker startup pressure and verify each Worker before continuing."
+    },
+    "team_leader": {
+      "id": "sceneguard_leader",
+      "name": "sceneguard-real-leader",
+      "creation": "created by Manager during Team creation",
+      "spec": "agents/scene-guard-leader/Agent.md",
+      "skills": ["asset-profile"],
+      "rule": "Create a dedicated TeamLeader Worker; do not reuse a business Worker as leader or let the host Supervisor impersonate it."
+    },
+    "worker_runtime": "Hermes Agent v0.10.0 for business Workers; CoPaw for TeamLeader",
+    "tool_gateway": {
+      "transport": "http-json",
+      "base_url": "http://<TOOL_HOST_REACHABLE_BY_WORKER>:18091",
+      "health": "GET /health",
+      "audit": "POST /v1/tools/asset.audit",
+      "create_job": "POST /v1/jobs",
+      "run_pipeline": "POST /v1/pipeline/run",
+      "mcp_status": "adapter planned; stable JSON contract implemented"
+    }
+  },
+  "agents": [
+    {
+      "id": "asset_auditor",
+      "name": "Asset Audit Worker",
+      "spec": "agents/asset-auditor/Agent.md",
+      "skills": ["package-audit", "mesh-validate"],
+      "write_access": false
+    },
+    {
+      "id": "repair_planner",
+      "name": "Repair Planner Worker",
+      "spec": "agents/repair-planner/Agent.md",
+      "skills": ["repair-plan"],
+      "write_access": false
+    },
+    {
+      "id": "repair_executor",
+      "name": "Repair Executor Worker",
+      "spec": "agents/repair-executor/Agent.md",
+      "skills": ["mesh-safe-repair", "texture-safe-resize"],
+      "write_access": "job working/checkpoints/published/artifacts only",
+      "status": "enabled for remove_degenerate_triangles and approved resize_embedded_textures"
+    },
+    {
+      "id": "regression_verifier",
+      "name": "Regression Verifier Worker",
+      "spec": "agents/regression-verifier/Agent.md",
+      "skills": ["package-audit", "mesh-validate", "regression-verify"],
+      "write_access": false
+    }
+  ],
+  "workflow": [
+    {"step": 1, "agent": "sceneguard_leader", "task": "load_asset_profile_bind_goal_create_project_and_task_dag"},
+    {"step": 2, "agent": "asset_auditor", "task": "run_deterministic_audit"},
+    {"step": 3, "agent": "repair_planner", "task": "build_whitelist_bound_patch_plan"},
+    {"step": 4, "agent": "repair_executor", "task": "execute_approved_step_on_working_copy"},
+    {"step": 5, "agent": "regression_verifier", "task": "independently_verify_publish_or_rollback"},
+    {"step": 6, "agent": "sceneguard_leader", "task": "publish_gate_summary_and_evidence_refs"}
+  ],
+  "risk_policy": {
+    "auto_execute": ["L0 read-only", "L1 tested whitelist"],
+    "approval_required": ["L2"],
+    "deny": ["L3", "operation not in whitelist"],
+    "current_repair_whitelist": ["remove_degenerate_triangles", "resize_embedded_textures"]
+  }
+}

@@ -1,0 +1,20 @@
+apiVersion: agentteams.io/v1beta1
+kind: Team
+metadata:
+  name: sceneguard-auto-v1
+spec:
+  description: SceneGuard zero-operator staged acceptance team
+  teamName: sceneguard-auto-v1
+  peerMentions: true
+  workerIdleTimeout: 12h
+  workerMembers:
+    - name: sceneguard-auto-v1-leader
+      role: team_leader
+    - name: sgauto-asset-auditor
+      role: worker
+    - name: sgauto-repair-planner
+      role: worker
+    - name: sgauto-repair-executor
+      role: worker
+    - name: sgauto-regression-verifier
+      role: worker

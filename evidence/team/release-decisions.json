@@ -1,0 +1,29 @@
+{
+  "schema_version": "0.1",
+  "status": "PASS",
+  "project_name": "SceneGuard",
+  "project_name_confirmed": true,
+  "license_spdx": "Apache-2.0",
+  "license_file": "LICENSE",
+  "members_confirmed": [
+    "顾梓洋",
+    "刘志豪",
+    "王峥睿"
+  ],
+  "roles_confirmed": true,
+  "member_roles": {
+    "顾梓洋": "统筹 · 工程化交付",
+    "刘志豪": "技术架构 · 工具链",
+    "王峥睿": "评测 · 实验分析"
+  },
+  "public_bios_authorized": true,
+  "public_asset_license_reviewed": true,
+  "distribution_scope": "SceneGuard repository code and team-created sample generators/assets are released under Apache-2.0; third-party assets and dependencies retain their recorded licenses.",
+  "confirmation_source": "The final submitter confirmed the team's decision in the active project conversation to replace MIT with Apache-2.0 in response to semifinal judge guidance.",
+  "confirmed_at": "2026-08-31T17:29:30.5443352+08:00",
+  "confirmed_by": [
+    "顾梓洋",
+    "刘志豪",
+    "王峥睿"
+  ]
+}

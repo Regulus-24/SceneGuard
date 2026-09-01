@@ -1,0 +1,51 @@
+{
+  "schema_version": "0.1",
+  "status": "PASS",
+  "mode": "offline-verify",
+  "source_platform": "GitHub",
+  "source_project": "KhronosGroup/glTF-Sample-Assets",
+  "asset_count": 3,
+  "license_policy": "CC0-1.0 with voluntary original-author credit retained",
+  "assets": [
+    {
+      "asset": "samples/public/Avocado.glb",
+      "source_record": "samples/public/Avocado.source.json",
+      "passed": true,
+      "downloaded": false,
+      "upstream_commit": "9429648735279342b4c32b8745f7904196607379",
+      "creator": "Microsoft",
+      "license_spdx": "CC0-1.0",
+      "sha256": "ccc9c3ce56423720b09399c2351537207cd5a65f859f9e6e2f30922762f3abd4",
+      "bytes": 8110040,
+      "download_url": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/9429648735279342b4c32b8745f7904196607379/Models/Avocado/glTF-Binary/Avocado.glb",
+      "attribution": "CC0 does not require attribution; voluntary credit: Avocado by Microsoft via KhronosGroup/glTF-Sample-Assets."
+    },
+    {
+      "asset": "samples/public/BoomBox.glb",
+      "source_record": "samples/public/BoomBox.source.json",
+      "passed": true,
+      "downloaded": false,
+      "upstream_commit": "9429648735279342b4c32b8745f7904196607379",
+      "creator": "Microsoft",
+      "license_spdx": "CC0-1.0",
+      "sha256": "f8b918445ebdd006768232205a62f5182d2208ca57f84c6ccc084943c0bc8f15",
+      "bytes": 10614184,
+      "download_url": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/9429648735279342b4c32b8745f7904196607379/Models/BoomBox/glTF-Binary/BoomBox.glb",
+      "attribution": "CC0 does not require attribution; voluntary credit: BoomBox by Microsoft via KhronosGroup/glTF-Sample-Assets."
+    },
+    {
+      "asset": "samples/public/BoxVertexColors.glb",
+      "source_record": "samples/public/BoxVertexColors.source.json",
+      "passed": true,
+      "downloaded": false,
+      "upstream_commit": "2bac6f8c57bf471df0d2a1e8a8ec023c7801dddf",
+      "creator": "Marco Hutter",
+      "license_spdx": "CC0-1.0",
+      "sha256": "9c48227f33b0ba2fbcf23b98ebf60d1c8ae0c6e6c5281e0aa3cc58affee10382",
+      "bytes": 1924,
+      "download_url": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/2bac6f8c57bf471df0d2a1e8a8ec023c7801dddf/Models/BoxVertexColors/glTF-Binary/BoxVertexColors.glb",
+      "attribution": "CC0 does not require attribution; voluntary credit: Box Vertex Colors by Marco Hutter via KhronosGroup/glTF-Sample-Assets."
+    }
+  ],
+  "claim_boundary": "This is a reproducible open-source asset-platform intake. It is not claimed as a private studio, customer, or production DAM integration."
+}

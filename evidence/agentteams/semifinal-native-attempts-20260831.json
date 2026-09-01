@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.1",
+  "status": "FAIL_NATIVE_TEAMLEADER",
+  "observed_at": "2026-08-31T10:14:15Z",
+  "framework": "AgentTeams/HiClaw 1.1.2",
+  "acceptance_spec": "at/tasks/p0-autonomous-staged-repair.md",
+  "dispatch_script": "scripts/dispatch_agentteams_p0.ps1",
+  "operator_actions_after_each_dispatch": 0,
+  "attempts": [
+    {
+      "task_id": "semifinal-l1-20260831-001",
+      "job_id": "semifinal-l1-20260831-001",
+      "team": "sceneguard-real",
+      "leader_model": "qwen3:8b",
+      "matrix_message_id": "msg_dcda8c71-0594-42b6-9a59-2ae2ffc8835b",
+      "terminal_status": "FAILED_BEFORE_PROJECT",
+      "failure_code": "MODEL_UPSTREAM_CONNECTION_REFUSED",
+      "facts": {
+        "message_received": true,
+        "model_attempts": 4,
+        "project_created": false,
+        "tasks_created": 0,
+        "workers_called": 0
+      },
+      "note": "The fixed Ollama container was stopped after Docker Desktop restart. This Task ID was not replayed."
+    },
+    {
+      "task_id": "semifinal-l1-20260831-002",
+      "job_id": "semifinal-l1-20260831-002",
+      "team": "sceneguard-real",
+      "leader_model": "qwen3:8b",
+      "matrix_message_id": "msg_89d182fc-2ce0-402a-bb35-255955591b30",
+      "terminal_status": "FAILED_BEFORE_PROJECT",
+      "failure_code": "PREMATURE_TEXT_COMPLETION_AFTER_FILESYNC",
+      "facts": {
+        "message_received": true,
+        "global_input_pulled": true,
+        "project_created": false,
+        "tasks_created": 0,
+        "workers_called": 0
+      },
+      "note": "Leader asked the requester what to do next instead of reading the staged files and creating the Project."
+    },
+    {
+      "task_id": "semifinal-l1-20260831-003",
+      "job_id": "semifinal-l1-20260831-003",
+      "team": "sceneguard-auto-v1",
+      "leader_model": "qwen3.5:9b",
+      "matrix_message_id": "msg_78b43870-d911-46c5-97a3-588edc61cd34",
+      "terminal_status": "FAILED_BEFORE_PROJECT",
+      "failure_code": "THINKING_ONLY_NO_TOOL_CALL",
+      "facts": {
+        "message_received": true,
+        "reasoning_duration_seconds": 67,
+        "native_tool_calls": 0,
+        "project_created": false,
+        "tasks_created": 0,
+        "workers_called": 0
+      },
+      "note": "Leader produced reasoning that described the intended DAG but emitted no file-sharing, project or task tool call."
+    }
+  ],
+  "acceptance": {
+    "native_teamleader_passed": false,
+    "five_agent_chain_passed": false,
+    "validated_supervisor_mode_unchanged": true,
+    "prohibited_claim": "Do not describe the validated host Supervisor as the fifth native Agent."
+  },
+  "next_engineering_gate": "Use a tool-calling-capable Leader model/runtime, reset stale session memory, verify current skill loading, and require Project creation as a machine gate before any business dispatch."
+}

@@ -1,0 +1,18 @@
+{
+  "schema_version": "0.1",
+  "status": "FAIL",
+  "autonomous": false,
+  "operator_actions_after_dispatch": 0,
+  "team": "sceneguard-real",
+  "task_id": "SG-P0-AUTO-20260825-002",
+  "job_id": "agentteams-auto-20260825-002",
+  "leader_model": "qwen3:8b",
+  "failure_code": "LEADER_TOOL_SCHEMA_NONCOMPLIANCE",
+  "root_cause": "The Leader emitted projectflow.create and filesync.write, neither of which exists in the current HiClaw tool contracts. Both calls were rejected fail-closed.",
+  "roles_completed": [],
+  "promotable_to_autonomous_evidence": false,
+  "next_attempt_change": "Switch only the TeamLeader to locally available qwen3.5:9b before dispatch; keep the deterministic tool and Worker contracts unchanged.",
+  "trace_refs": [
+    "evidence/agentteams/trace-autonomous-attempt-002.jsonl"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "profile_id": "web-realtime",
+  "version": "0.5-visual-demo",
+  "description": "Visual comparison demo: allows a mixed two-triangle asset so before and after repair both remain renderable.",
+  "rules": {
+    "max_file_bytes": 33554432,
+    "max_triangles": 100000,
+    "max_texture_dimension": 4096,
+    "allow_external_uris": false,
+    "require_embedded_buffers": true
+  },
+  "repair_policy": {
+    "allowed_operations": ["remove_degenerate_triangles"],
+    "operation_risk_levels": {
+      "remove_degenerate_triangles": "L1"
+    },
+    "auto_execute_risk_levels": ["L0", "L1"],
+    "approval_required_risk_levels": ["L2"],
+    "denied_risk_levels": ["L3"],
+    "note": "Only indexed TRIANGLES primitives with regular embedded accessors are eligible. All other repairs fail closed."
+  }
+}

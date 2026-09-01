@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "framework": "AgentTeams/HiClaw",
+  "framework_version": "1.1.2",
+  "observed_at": "2026-08-11T23:20:00+08:00",
+  "host": {
+    "os": "Microsoft Windows 11 Pro",
+    "cpu": "Intel Core i5-14600KF",
+    "memory_gb": 31.8,
+    "docker_version": "29.6.2",
+    "gpu": "NVIDIA GeForce RTX 5060 8GB"
+  },
+  "worker_runtime": "Hermes Agent v0.10.0",
+  "model_provider": "local Ollama through HiClaw AI Gateway",
+  "model_name": "qwen3:8b",
+  "team_name": "sceneguard-real",
+  "team_leader": "sceneguard-real-leader",
+  "worker_count": 4,
+  "workers": [
+    "sceneguard-real-asset-auditor",
+    "sceneguard-real-repair-planner",
+    "sceneguard-real-repair-executor",
+    "sceneguard-real-regression-verifier"
+  ],
+  "gateway": {
+    "reachable_url_redacted": "http://sceneguard-gateway:18091",
+    "health_http_status": 200,
+    "authentication": "bearer token from ignored runtime file"
+  },
+  "coordination": {
+    "mode": "AgentTeams Matrix with audited operator-assisted recovery",
+    "leader_project_created": true,
+    "leader_native_tool_calls_observed": true,
+    "worker_native_terminal_calls_observed": true,
+    "unverified_model_text_accepted": false
+  },
+  "cases": {
+    "clean": {
+      "job_id": "agentteams-clean-real-20260811",
+      "gate_state": "PASS",
+      "trace_ref": "evidence/agentteams/trace-clean.jsonl"
+    },
+    "repair": {
+      "job_id": "agentteams-repair-real-20260811-v2",
+      "gate_state": "REPAIRED_PASS",
+      "trace_ref": "evidence/agentteams/trace-repair.jsonl"
+    }
+  },
+  "trace_refs": [
+    "evidence/agentteams/trace-control-plane.jsonl",
+    "evidence/agentteams/trace-clean.jsonl",
+    "evidence/agentteams/trace-repair.jsonl"
+  ],
+  "secret_scan_passed": true,
+  "confirmed_by": [
+    "SceneGuard runtime operator",
+    "HiClaw controller state",
+    "Hermes session database"
+  ]
+}

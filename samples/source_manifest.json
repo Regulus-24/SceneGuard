@@ -1,0 +1,83 @@
+{
+  "schema_version": "0.1",
+  "source_type": "MIXED_SELF_CREATED_AND_LICENSED_PUBLIC",
+  "generator": "scripts/generate_samples.py",
+  "license_status": "team-created samples are distributed under Apache-2.0; each public sample retains its recorded upstream license",
+  "samples": {
+    "clean_triangle.glb": {
+      "expected_gate": "PASS",
+      "purpose": "one valid triangle"
+    },
+    "over_triangle_budget.glb": {
+      "expected_gate": "REJECTED",
+      "purpose": "two triangles exceed demo profile max=1"
+    },
+    "broken_reference.glb": {
+      "expected_gate": "REJECTED",
+      "purpose": "POSITION points to missing accessor"
+    },
+    "accessor_out_of_bounds.glb": {
+      "expected_gate": "REJECTED",
+      "purpose": "accessor count exceeds bufferView"
+    },
+    "degenerate_triangle.glb": {
+      "expected_gate": "REJECTED",
+      "purpose": "triangle repeats one vertex index"
+    },
+    "degenerate_collinear.glb": {
+      "expected_gate": "REJECTED",
+      "purpose": "three distinct vertices are collinear"
+    },
+    "degenerate_duplicate_positions.glb": {
+      "expected_gate": "REJECTED",
+      "purpose": "two indices reference equal positions"
+    },
+    "degenerate_repeated_u8.glb": {
+      "expected_gate": "REJECTED",
+      "purpose": "repeated index with UNSIGNED_BYTE indices"
+    },
+    "degenerate_repeated_u32.glb": {
+      "expected_gate": "REJECTED",
+      "purpose": "repeated index with UNSIGNED_INT indices"
+    },
+    "mixed_valid_degenerate.glb": {
+      "expected_gate": "REJECTED",
+      "purpose": "one valid and one degenerate triangle in the same primitive"
+    },
+    "oversized_texture.glb": {
+      "expected_gate": "REJECTED",
+      "purpose": "one embedded 2048x512 PNG exceeds the demo texture budget"
+    },
+    "external_buffer.glb": {
+      "expected_gate": "REJECTED",
+      "purpose": "GLB points to external buffer URI"
+    },
+    "public/Avocado.glb": {
+      "expected_gate": "REJECTED",
+      "purpose": "license-cleared real public GLB; evaluated by the dedicated read-only public Profile",
+      "source_type": "PUBLIC_LICENSED",
+      "source_record": "public/Avocado.source.json",
+      "license_spdx": "CC0-1.0",
+      "redistribution_allowed": true,
+      "sha256": "ccc9c3ce56423720b09399c2351537207cd5a65f859f9e6e2f30922762f3abd4"
+    },
+    "public/BoomBox.glb": {
+      "expected_gate": "REJECTED",
+      "purpose": "license-cleared real public GLB; evaluated by the dedicated read-only public Profile",
+      "source_type": "PUBLIC_LICENSED",
+      "source_record": "public/BoomBox.source.json",
+      "license_spdx": "CC0-1.0",
+      "redistribution_allowed": true,
+      "sha256": "f8b918445ebdd006768232205a62f5182d2208ca57f84c6ccc084943c0bc8f15"
+    },
+    "public/BoxVertexColors.glb": {
+      "expected_gate": "REJECTED",
+      "purpose": "license-cleared real public GLB; evaluated by the dedicated read-only public Profile",
+      "source_type": "PUBLIC_LICENSED",
+      "source_record": "public/BoxVertexColors.source.json",
+      "license_spdx": "CC0-1.0",
+      "redistribution_allowed": true,
+      "sha256": "9c48227f33b0ba2fbcf23b98ebf60d1c8ae0c6e6c5281e0aa3cc58affee10382"
+    }
+  }
+}

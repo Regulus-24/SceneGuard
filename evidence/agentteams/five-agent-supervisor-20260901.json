@@ -1,0 +1,52 @@
+{
+  "schema_version": "0.1",
+  "status": "PASS",
+  "observed_at": "2026-09-01T07:18:25.204308+00:00",
+  "mode": "validated five-Agent zero-operator Supervisor mode",
+  "framework": "AgentTeams/HiClaw",
+  "team": "sceneguard-auto-v1",
+  "run_id": "semifinal-five-20260901-009",
+  "project_id": "semifinal-five-20260901-009",
+  "task_ids": [
+    "semifinal-five-20260901-009-01",
+    "semifinal-five-20260901-009-02",
+    "semifinal-five-20260901-009-03",
+    "semifinal-five-20260901-009-04"
+  ],
+  "agent_count": 5,
+  "worker_count": 4,
+  "operator_actions_after_dispatch": 0,
+  "gate_state": "REPAIRED_PASS",
+  "plan_id": "plan-343240a3244c",
+  "leader_model": "qwen3.5:9b",
+  "worker_model": "qwen3.5:4b",
+  "skill_ids": [
+    "asset-profile",
+    "mesh-safe-repair",
+    "mesh-validate",
+    "package-audit",
+    "regression-verify",
+    "repair-plan"
+  ],
+  "cross_report_invariants_passed": true,
+  "run_result_ref": "evidence/agentteams/five-agent-supervisor-20260901/run-result.json",
+  "run_result_sha256": "4191100be26bd6c4c3cc21ddfcec9da4725230d642665b8b69aad7136fd0bb9e",
+  "stability_report_ref": "reports/agentteams-stability-latest.json",
+  "stability_report_sha256": "a1b86b77747774097d971fd422198b4b28c68d10b2bb3f49e69c069048a3b92b",
+  "trace_refs": [
+    "evidence/agentteams/five-agent-supervisor-20260901/00-team-leader-init.json",
+    "evidence/agentteams/five-agent-supervisor-20260901/01-asset-auditor.json",
+    "evidence/agentteams/five-agent-supervisor-20260901/01-leader-accept.json",
+    "evidence/agentteams/five-agent-supervisor-20260901/02-repair-planner.json",
+    "evidence/agentteams/five-agent-supervisor-20260901/02-leader-accept.json",
+    "evidence/agentteams/five-agent-supervisor-20260901/03-repair-executor.json",
+    "evidence/agentteams/five-agent-supervisor-20260901/03-leader-accept.json",
+    "evidence/agentteams/five-agent-supervisor-20260901/04-regression-verifier.json",
+    "evidence/agentteams/five-agent-supervisor-20260901/04-leader-accept.json",
+    "evidence/agentteams/five-agent-supervisor-20260901/05-team-leader-finalize.json",
+    "evidence/agentteams/five-agent-supervisor-20260901/control-trace.jsonl",
+    "evidence/agentteams/five-agent-supervisor-20260901/run-result.json"
+  ],
+  "secret_scan_passed": true,
+  "claim_boundary": "All five model decisions and business actions ran inside AgentTeams containers; the host locked topology and enforced the finite state machine. This is not claimed as free-form native Matrix orchestration."
+}

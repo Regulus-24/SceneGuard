@@ -1,0 +1,32 @@
+{
+  "schema_version": "0.1",
+  "status": "MEASUREMENT_PROTOCOL_READY_BASELINE_PENDING",
+  "purpose": "Quantify SceneGuard business value without inventing a manual baseline.",
+  "unit_of_analysis": "one GLB quality-gate job under a frozen Profile",
+  "required_scenarios": ["S1_PUBLIC_CLEAN", "S2_L1_AUTONOMOUS_REPAIR", "S3_L2_BOUND_APPROVAL", "S4_FAULT_ROLLBACK"],
+  "automated_observations": {
+    "source": "per-run metrics.json plus AgentTeams control-plane timestamps",
+    "required_fields": ["started_at", "completed_at", "end_to_end_duration_ms", "gate_state", "human_approval_count", "business_retry_count", "rollback_count", "evidence_field_completeness"]
+  },
+  "manual_baseline_protocol": {
+    "status": "PENDING_TEAM_MEASUREMENT",
+    "minimum_participants": 3,
+    "minimum_repetitions_per_scenario": 3,
+    "same_input_profile_and_acceptance_criteria": true,
+    "record_fields": ["participant_id_pseudonym", "scenario_id", "started_at", "completed_at", "hands_on_seconds", "defects_found", "incorrect_release", "rework_count"],
+    "prohibited": ["estimated times entered as observations", "using different assets or thresholds", "discarding failed attempts"]
+  },
+  "formulas": {
+    "cycle_time_reduction_pct": "(manual_median_seconds - agent_median_seconds) / manual_median_seconds * 100",
+    "hands_on_time_reduction_pct": "(manual_hands_on_seconds - agent_human_hands_on_seconds) / manual_hands_on_seconds * 100",
+    "false_release_rate": "incorrect_release_count / completed_job_count",
+    "first_pass_yield": "jobs_without_rework / completed_job_count",
+    "evidence_completeness": "present_required_evidence_fields / total_required_evidence_fields",
+    "estimated_cost_avoidance_cny": "(manual_hours - agent_human_hours) * approved_hourly_cost_cny - model_and_compute_cost_cny"
+  },
+  "reporting_rules": {
+    "no_baseline": "report absolute automated timings and evidence coverage only; do not claim savings or ROI",
+    "confidence": "report median, p90 and raw sample count; label small samples",
+    "metric_vs_evidence": "business metrics quantify value; evidence chain proves how each number and gate was produced. They are linked but not the same requirement."
+  }
+}

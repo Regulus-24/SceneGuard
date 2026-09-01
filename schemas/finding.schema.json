@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sceneguard.local/schemas/finding.schema.json",
+  "title": "SceneGuard Finding 0.1",
+  "type": "object",
+  "required": [
+    "finding_id",
+    "rule_id",
+    "severity",
+    "message",
+    "location",
+    "observed",
+    "expected",
+    "evidence",
+    "repairability",
+    "confidence"
+  ],
+  "properties": {
+    "finding_id": {"type": "string", "pattern": "^f-[0-9]{4,}$"},
+    "rule_id": {"type": "string", "minLength": 1},
+    "severity": {"enum": ["INFO", "WARNING", "ERROR"]},
+    "message": {"type": "string", "minLength": 1},
+    "location": {"type": "object"},
+    "observed": {},
+    "expected": {},
+    "evidence": {"type": "object"},
+    "repairability": {"enum": ["NONE", "MANUAL_ONLY", "AUTO_CANDIDATE"]},
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1}
+  },
+  "additionalProperties": false
+}

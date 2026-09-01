@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sceneguard.local/schemas/pipeline-decision-input.schema.json",
+  "title": "SceneGuard Pending Pipeline Decision Input 0.1",
+  "type": "object",
+  "required": ["job_id", "profile", "decision"],
+  "properties": {
+    "job_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,95}$"},
+    "profile": {"type": "string", "minLength": 1},
+    "decision": {"type": "string", "enum": ["APPROVE", "REJECT"]},
+    "approval_actor": {"type": "string", "minLength": 1, "maxLength": 128},
+    "fault_injection": {
+      "type": ["string", "null"],
+      "enum": ["tamper_before_execute", "tool_error_after_execute", "corrupt_after_execute", null]
+    }
+  },
+  "additionalProperties": false
+}

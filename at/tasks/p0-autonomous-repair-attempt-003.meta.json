@@ -1,0 +1,16 @@
+{
+  "task_id": "SG-P0-AUTO-20260825-003",
+  "title": "SceneGuard P0 contract-compiled autonomous repair acceptance attempt 003",
+  "type": "finite",
+  "assigned_to": "sceneguard-real-leader",
+  "delegated_to_team": "sceneguard-real",
+  "job_id": "agentteams-auto-20260825-003",
+  "project_id": "sceneguard-p0-auto-20260825-003",
+  "status": "assigned",
+  "created_at": "2026-08-25T11:17:42+08:00",
+  "acceptance_contract": "at/automation-contract.v0.1.json",
+  "leader_runbook": "p0-leader-runbook-attempt-003.md",
+  "pre_dispatch_storage": [
+    "global-shared/tasks/SG-P0-AUTO-20260825-003/"
+  ]
+}

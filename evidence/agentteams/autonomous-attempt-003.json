@@ -1,0 +1,19 @@
+{
+  "schema_version": "0.1",
+  "status": "FAIL",
+  "autonomous": false,
+  "operator_actions_after_dispatch": 0,
+  "team": "sceneguard-real",
+  "task_id": "SG-P0-AUTO-20260825-003",
+  "job_id": "agentteams-auto-20260825-003",
+  "leader_model": "qwen3:8b",
+  "contract_compiled_runbook": true,
+  "failure_code": "LEADER_PREMATURE_TERMINATION",
+  "root_cause": "After a successful global-shared pull, the Leader emitted terminal help text instead of reading the required inputs and continuing the finite workflow.",
+  "roles_completed": [],
+  "promotable_to_autonomous_evidence": false,
+  "recommended_isolated_change": "Create a separate acceptance Team with a stronger Leader model, or add a deterministic schema-validating Supervisor that advances the finite state machine without human messages. Do not mutate the retained working Team in place.",
+  "trace_refs": [
+    "evidence/agentteams/trace-autonomous-attempt-003.jsonl"
+  ]
+}

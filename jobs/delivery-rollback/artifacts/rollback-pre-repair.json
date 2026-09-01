@@ -1,0 +1,10 @@
+{
+  "schema_version": "0.1",
+  "job_id": "delivery-rollback",
+  "checkpoint": "pre-repair",
+  "before_sha256": "09fb340b31ee8f74f50bb878bf68baccb800df689ef7b473dcb414b218ad9613",
+  "after_sha256": "fe504e9b7676ae389d1a2c4fc3d233ead84ca66422f3f7ff792969808040648b",
+  "checkpoint_sha256": "fe504e9b7676ae389d1a2c4fc3d233ead84ca66422f3f7ff792969808040648b",
+  "success": true,
+  "completed_at": "2026-08-06T08:29:29.346938+00:00"
+}

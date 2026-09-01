@@ -1,0 +1,54 @@
+{
+  "schema_version": "0.1",
+  "contract_id": "sceneguard-agentteams-autonomous-run-v0.1",
+  "purpose": "Make one SceneGuard AgentTeams run replayable, bounded and independently verifiable.",
+  "framework": "AgentTeams/HiClaw",
+  "team": "sceneguard-real",
+  "required_roles": [
+    "sceneguard-real-leader",
+    "sceneguard-real-asset-auditor",
+    "sceneguard-real-repair-planner",
+    "sceneguard-real-repair-executor",
+    "sceneguard-real-regression-verifier"
+  ],
+  "state_machine": [
+    "DISPATCHED",
+    "AUDITED",
+    "PLANNED",
+    "EXECUTED",
+    "VERIFIED",
+    "COMPLETED"
+  ],
+  "terminal_states": ["COMPLETED", "FAILED", "NEED_APPROVAL"],
+  "retry_policy": {
+    "schema_or_transport_failures_per_step": 2,
+    "business_failures": 0,
+    "job_recreation": false,
+    "operator_recovery": false
+  },
+  "tool_policy": {
+    "model_text_is_untrusted": true,
+    "accepted_evidence": [
+      "SceneGuard HTTP response envelope",
+      "SceneGuard JSON or JSONL artifact",
+      "HiClaw task and Matrix event metadata",
+      "Hermes native tool-call record"
+    ],
+    "write_role": "sceneguard-real-repair-executor",
+    "read_only_roles": [
+      "sceneguard-real-asset-auditor",
+      "sceneguard-real-repair-planner",
+      "sceneguard-real-regression-verifier"
+    ]
+  },
+  "consistency_invariants": [
+    "one job_id is used by every role",
+    "profile id and version are unchanged across every artifact",
+    "PatchPlan asset hash equals the audited input hash",
+    "execution output hash equals regression candidate hash",
+    "GateDecision gate_state equals the team result gate_state",
+    "published asset hash equals the release attestation hash",
+    "every claimed artifact reference exists and passes the no-secret scan"
+  ],
+  "autonomy_claim_rule": "A run is autonomous only when no operator call, payload correction, worker substitution or manual artifact edit occurs between dispatch and terminal state."
+}

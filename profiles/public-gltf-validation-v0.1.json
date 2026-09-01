@@ -1,0 +1,20 @@
+{
+  "profile_id": "public-gltf-validation",
+  "version": "0.1",
+  "description": "Permissive read-only profile for validating small, license-cleared public GLB assets. Values are SceneGuard evaluation defaults, not production thresholds.",
+  "rules": {
+    "max_file_bytes": 16777216,
+    "max_triangles": 100000,
+    "max_texture_dimension": 4096,
+    "allow_external_uris": false,
+    "require_embedded_buffers": true
+  },
+  "repair_policy": {
+    "allowed_operations": [],
+    "operation_risk_levels": {},
+    "auto_execute_risk_levels": ["L0", "L1"],
+    "approval_required_risk_levels": ["L2"],
+    "denied_risk_levels": ["L3"],
+    "note": "Public-asset evaluation is read-only; no repair operation is enabled."
+  }
+}

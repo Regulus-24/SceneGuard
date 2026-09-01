@@ -1,0 +1,5 @@
+{"record":"matrix_task","event_id":"$tYBffRBko9GiBpP7PbbLM2MF5nhVb3NUesAPzTE_lG0","sender":"sceneguard-real-leader","worker":"sceneguard-real-regression-verifier","job_id":"agentteams-clean-real-20260811"}
+{"record":"agent_session","session_id":"20260811_151800_ec38e7dd","source":"matrix","model":"qwen3:8b","runtime":"Hermes Agent v0.10.0","tool_call_count":1}
+{"record":"tool_call","worker":"sceneguard-real-regression-verifier","tool":"terminal","command":"python3 /host-share/sceneguard_client.py audit clean_triangle.glb web-realtime-v0.2.json agentteams-clean-real-20260811"}
+{"record":"tool_result","ok":true,"exit_code":0,"job_id":"agentteams-clean-real-20260811","asset_sha256":"46f324f7c888b2f9ad5ec5aa1144e10814d183b9abecf6d2d342c0bc4153cb59","profile":"web-realtime@0.2","gate_state":"PASS","findings":[],"checks_completed":6,"checks_incomplete":[]}
+{"record":"case_outcome","case":"clean","gate_state":"PASS","confirmed_by":"sceneguard-real-regression-verifier"}

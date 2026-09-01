@@ -1,0 +1,38 @@
+{
+  "schema_version": "0.1",
+  "status": "TODO_REAL_RUN_ONLY",
+  "framework": "AgentTeams/HiClaw",
+  "framework_version": "TODO_CAPTURE_RUNNING_VERSION",
+  "observed_at": "TODO_ISO8601",
+  "host": {
+    "os": "TODO",
+    "cpu": "TODO",
+    "memory_gb": 0,
+    "docker_version": "TODO"
+  },
+  "worker_runtime": "TODO",
+  "model_provider": "TODO",
+  "model_name": "TODO",
+  "team_leader": "TODO_REAL_TEAM_LEADER_ID",
+  "worker_count": 0,
+  "workers": [],
+  "gateway": {
+    "reachable_url_redacted": "TODO",
+    "health_http_status": 0
+  },
+  "cases": {
+    "clean": {
+      "job_id": "TODO",
+      "gate_state": "TODO",
+      "trace_ref": "TODO_PROJECT_RELATIVE_PATH"
+    },
+    "repair": {
+      "job_id": "TODO",
+      "gate_state": "TODO",
+      "trace_ref": "TODO_PROJECT_RELATIVE_PATH"
+    }
+  },
+  "trace_refs": [],
+  "secret_scan_passed": false,
+  "confirmed_by": []
+}

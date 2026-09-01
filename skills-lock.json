@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "alibabacloud-resourcecenter-search": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/migrationom/entconsole/alibabacloud-resourcecenter-search/SKILL.md",
+      "computedHash": "87650dfdadb1e3c1c62fa2a86fc1fc2bda571047d6753dab3bfa99b44f54c809"
+    }
+  }
+}

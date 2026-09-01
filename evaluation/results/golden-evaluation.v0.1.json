@@ -1,0 +1,107 @@
+{
+  "schema_version": "0.1",
+  "generated_at": "2026-08-04T11:23:50.345737+00:00",
+  "profile": "web-realtime@0.1",
+  "dataset": {
+    "sample_count": 6,
+    "expected_error_rule_count": 6,
+    "scope": "team-self-created deterministic samples only"
+  },
+  "metrics": {
+    "sample_gate_accuracy": 1.0,
+    "expected_rule_recall": 1.0,
+    "unexpected_error_rule_count": 0,
+    "clean_false_positive_rule_count": 0,
+    "evidence_completeness": 1.0
+  },
+  "results": [
+    {
+      "sample": "clean_triangle.glb",
+      "expected_gate": "PASS",
+      "actual_gate": "PASS",
+      "expected_error_rules": [],
+      "actual_error_rules": [],
+      "missing_error_rules": [],
+      "unexpected_error_rules": [],
+      "gate_match": true,
+      "evidence_complete": true
+    },
+    {
+      "sample": "over_triangle_budget.glb",
+      "expected_gate": "REJECTED",
+      "actual_gate": "REJECTED",
+      "expected_error_rules": [
+        "profile.max_triangles"
+      ],
+      "actual_error_rules": [
+        "profile.max_triangles"
+      ],
+      "missing_error_rules": [],
+      "unexpected_error_rules": [],
+      "gate_match": true,
+      "evidence_complete": true
+    },
+    {
+      "sample": "broken_reference.glb",
+      "expected_gate": "REJECTED",
+      "actual_gate": "REJECTED",
+      "expected_error_rules": [
+        "package.reference_integrity"
+      ],
+      "actual_error_rules": [
+        "package.reference_integrity"
+      ],
+      "missing_error_rules": [],
+      "unexpected_error_rules": [],
+      "gate_match": true,
+      "evidence_complete": true
+    },
+    {
+      "sample": "accessor_out_of_bounds.glb",
+      "expected_gate": "REJECTED",
+      "actual_gate": "REJECTED",
+      "expected_error_rules": [
+        "mesh.geometry_decode",
+        "package.accessor_bounds"
+      ],
+      "actual_error_rules": [
+        "mesh.geometry_decode",
+        "package.accessor_bounds"
+      ],
+      "missing_error_rules": [],
+      "unexpected_error_rules": [],
+      "gate_match": true,
+      "evidence_complete": true
+    },
+    {
+      "sample": "degenerate_triangle.glb",
+      "expected_gate": "REJECTED",
+      "actual_gate": "REJECTED",
+      "expected_error_rules": [
+        "mesh.degenerate_triangles"
+      ],
+      "actual_error_rules": [
+        "mesh.degenerate_triangles"
+      ],
+      "missing_error_rules": [],
+      "unexpected_error_rules": [],
+      "gate_match": true,
+      "evidence_complete": true
+    },
+    {
+      "sample": "external_buffer.glb",
+      "expected_gate": "REJECTED",
+      "actual_gate": "REJECTED",
+      "expected_error_rules": [
+        "package.single_file"
+      ],
+      "actual_error_rules": [
+        "package.single_file"
+      ],
+      "missing_error_rules": [],
+      "unexpected_error_rules": [],
+      "gate_match": true,
+      "evidence_complete": true
+    }
+  ]
+}

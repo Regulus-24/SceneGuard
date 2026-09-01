@@ -1,0 +1,16 @@
+{
+  "schema_version": "0.1",
+  "original_sha256": "fe504e9b7676ae389d1a2c4fc3d233ead84ca66422f3f7ff792969808040648b",
+  "candidate_sha256": "eff3ef25397673282fccaf5a2b3c53b4389a65fb4efcfedb82dda76109f45b1b",
+  "target_rules": [
+    "mesh.degenerate_triangles"
+  ],
+  "resolved_target_rules": [
+    "mesh.degenerate_triangles"
+  ],
+  "unresolved_target_rules": [],
+  "new_error_findings": [],
+  "required_checks_complete": true,
+  "repair_attempted": true,
+  "gate_state": "REPAIRED_PASS"
+}

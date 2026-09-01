@@ -1,0 +1,66 @@
+{
+  "schema_version": "0.1",
+  "profile": "web-realtime-v0.1.json",
+  "samples": {
+    "clean_triangle.glb": {
+      "expected_gate": "PASS",
+      "expected_error_rules": []
+    },
+    "over_triangle_budget.glb": {
+      "expected_gate": "REJECTED",
+      "expected_error_rules": ["profile.max_triangles"]
+    },
+    "broken_reference.glb": {
+      "expected_gate": "REJECTED",
+      "expected_error_rules": ["package.reference_integrity"]
+    },
+    "accessor_out_of_bounds.glb": {
+      "expected_gate": "REJECTED",
+      "expected_error_rules": ["package.accessor_bounds", "mesh.geometry_decode"]
+    },
+    "degenerate_triangle.glb": {
+      "expected_gate": "REJECTED",
+      "expected_error_rules": ["mesh.degenerate_triangles"]
+    },
+    "degenerate_collinear.glb": {
+      "expected_gate": "REJECTED",
+      "expected_error_rules": ["mesh.degenerate_triangles"]
+    },
+    "degenerate_duplicate_positions.glb": {
+      "expected_gate": "REJECTED",
+      "expected_error_rules": ["mesh.degenerate_triangles"]
+    },
+    "degenerate_repeated_u8.glb": {
+      "expected_gate": "REJECTED",
+      "expected_error_rules": ["mesh.degenerate_triangles"]
+    },
+    "degenerate_repeated_u32.glb": {
+      "expected_gate": "REJECTED",
+      "expected_error_rules": ["mesh.degenerate_triangles"]
+    },
+    "mixed_valid_degenerate.glb": {
+      "expected_gate": "REJECTED",
+      "expected_error_rules": ["mesh.degenerate_triangles", "profile.max_triangles"]
+    },
+    "oversized_texture.glb": {
+      "expected_gate": "REJECTED",
+      "expected_error_rules": ["profile.max_texture_dimension"]
+    },
+    "external_buffer.glb": {
+      "expected_gate": "REJECTED",
+      "expected_error_rules": ["package.single_file"]
+    },
+    "public/BoxVertexColors.glb": {
+      "expected_gate": "REJECTED",
+      "expected_error_rules": ["profile.max_triangles"]
+    },
+    "public/Avocado.glb": {
+      "expected_gate": "REJECTED",
+      "expected_error_rules": ["profile.max_file_bytes", "profile.max_triangles", "profile.max_texture_dimension"]
+    },
+    "public/BoomBox.glb": {
+      "expected_gate": "REJECTED",
+      "expected_error_rules": ["profile.max_file_bytes", "profile.max_triangles", "profile.max_texture_dimension"]
+    }
+  }
+}

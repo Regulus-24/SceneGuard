@@ -1,0 +1,115 @@
+{
+  "schema_version": "0.2",
+  "registry_id": "sceneguard-skill-governance-v0.2",
+  "contract_registry": "schemas/registry.v0.1.json",
+  "release_policy": {
+    "states": ["draft", "candidate", "stable", "deprecated"],
+    "required_checks": [
+      "input_schema_valid",
+      "output_schema_valid",
+      "golden_cases_pass",
+      "failure_path_pass",
+      "security_boundary_pass",
+      "owner_approval_recorded"
+    ],
+    "rollout_percentages": [0, 25, 100],
+    "rollback_triggers": [
+      "schema_rejection",
+      "new_error_finding",
+      "required_check_incomplete",
+      "error_rate_regression",
+      "latency_budget_regression",
+      "security_boundary_violation"
+    ],
+    "rollback_action": "pin the previous registry version and reject new jobs using the failed Skill version"
+  },
+  "compatibility_dimensions": [
+    "AgentTeams team spec version",
+    "SceneGuard package version",
+    "input and output Schema version",
+    "Quality Profile version",
+    "Gateway API version",
+    "Python and deterministic tool dependency version"
+  ],
+  "skills": [
+    {
+      "id": "asset-profile",
+      "version": "0.1.0",
+      "owner_agent": "sceneguard_leader",
+      "callers": ["sceneguard_leader"],
+      "release_state": "stable",
+      "core_capability": true,
+      "call_condition": "once at intake before any audit or planning",
+      "evaluation_gate": "all versioned Profiles load or fail closed; runtime text cannot mutate a Profile",
+      "rollback_to": null
+    },
+    {
+      "id": "package-audit",
+      "version": "0.1.0",
+      "owner_agent": "asset_auditor",
+      "callers": ["asset_auditor", "regression_verifier"],
+      "release_state": "stable",
+      "core_capability": true,
+      "call_condition": "initial audit and every independent final verification",
+      "evaluation_gate": "all required GLB structure, bounds and reference checks complete or fail closed",
+      "rollback_to": null
+    },
+    {
+      "id": "mesh-validate",
+      "version": "0.1.0",
+      "owner_agent": "asset_auditor",
+      "callers": ["asset_auditor", "regression_verifier"],
+      "release_state": "candidate",
+      "core_capability": false,
+      "call_condition": "when the active Profile enables implemented geometry checks",
+      "evaluation_gate": "implemented triangle, accessor, non-finite and degenerate checks pass Golden tests",
+      "missing_capabilities": ["duplicate vertices", "local normal flips", "non-manifold topology"],
+      "claim_boundary": "candidate non-core geometry extension until the missing checks have independent Golden tests",
+      "rollback_to": null
+    },
+    {
+      "id": "repair-plan",
+      "version": "0.1.0",
+      "owner_agent": "repair_planner",
+      "callers": ["repair_planner"],
+      "release_state": "stable",
+      "core_capability": true,
+      "call_condition": "only when the initial AuditReport contains ERROR findings",
+      "evaluation_gate": "every READY plan is hash-bound, Profile-bound and whitelist-only; unsupported findings become MANUAL_ONLY",
+      "rollback_to": null
+    },
+    {
+      "id": "mesh-safe-repair",
+      "version": "0.1.0",
+      "owner_agent": "repair_executor",
+      "callers": ["repair_executor"],
+      "release_state": "stable",
+      "core_capability": true,
+      "call_condition": "L1 degenerate-triangle plan with a verified checkpoint",
+      "evaluation_gate": "at least five independent repair attempts, success rate >= 90%, original hash unchanged",
+      "rollback_to": null
+    },
+    {
+      "id": "texture-safe-resize",
+      "version": "0.1.0",
+      "owner_agent": "repair_executor",
+      "callers": ["repair_executor"],
+      "release_state": "stable",
+      "core_capability": true,
+      "call_condition": "L2 oversized embedded texture plan with human approval bound to plan_id and asset_sha256",
+      "evaluation_gate": "approved resize preserves aspect ratio, passes full regression and never mutates original",
+      "rollback_to": null
+    },
+    {
+      "id": "regression-verify",
+      "version": "0.1.0",
+      "owner_agent": "regression_verifier",
+      "callers": ["regression_verifier"],
+      "release_state": "stable",
+      "core_capability": true,
+      "call_condition": "every candidate or clean final gate before publish",
+      "evaluation_gate": "all target findings resolved, zero new ERROR, required checks complete, rollback suite 100%",
+      "rollback_to": null
+    }
+  ]
+}

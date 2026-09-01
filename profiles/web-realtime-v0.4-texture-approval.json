@@ -1,0 +1,20 @@
+{
+  "profile_id": "web-realtime",
+  "version": "0.4-texture-approval",
+  "description": "Demo Profile requiring human approval before deterministic embedded texture downscaling.",
+  "rules": {
+    "max_file_bytes": 33554432,
+    "max_triangles": 100000,
+    "max_texture_dimension": 1024,
+    "allow_external_uris": false,
+    "require_embedded_buffers": true
+  },
+  "repair_policy": {
+    "allowed_operations": ["resize_embedded_textures"],
+    "operation_risk_levels": {"resize_embedded_textures": "L2"},
+    "auto_execute_risk_levels": ["L0", "L1"],
+    "approval_required_risk_levels": ["L2"],
+    "denied_risk_levels": ["L3"],
+    "note": "Downscaling may change visual fidelity, so execution requires a human decision bound to the PatchPlan and asset hash."
+  }
+}

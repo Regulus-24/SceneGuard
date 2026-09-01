@@ -1,0 +1,30 @@
+{
+  "schema_version": "0.1",
+  "status": "TODO_REAL_INTEGRATION_ONLY",
+  "skill_name": "alibabacloud-resourcecenter-search",
+  "skill_version": "TODO_CAPTURE_INSTALLED_VERSION",
+  "official_source_url": "https://skills.aliyun.com/skills/alibabacloud-resourcecenter-search",
+  "official_quickstart_url": "https://help.aliyun.com/zh/skillsportal/quickly-use-alibaba-cloud-skills",
+  "observed_at": "TODO_ISO8601",
+  "auth_mode": "RAM identity via Alibaba Cloud CLI; credentials redacted and never stored",
+  "necessity_in_sceneguard": "Read-only discovery verifies the official cloud Skill chain and confirms candidate OSS evidence destinations before any write integration.",
+  "successful_call": {
+    "operation": "TODO_REAL_RESOURCECENTER_QUERY",
+    "sanitized_result_summary": "TODO",
+    "trace_ref": "TODO_EXISTING_SANITIZED_TRACE"
+  },
+  "failure_tested": false,
+  "failure_case": {
+    "mode": "TODO_MISSING_CREDENTIAL_OR_LEAST_PRIVILEGE_DENIAL",
+    "observed_error_code": "TODO",
+    "fallback": "Keep evidence in the local hash-verified submission bundle; do not retry writes blindly.",
+    "trace_ref": "TODO_EXISTING_SANITIZED_TRACE"
+  },
+  "replacement_strategy": "Replace the discovery call with a read-only ResourceCenter API/CLI adapter behind the same evidence contract; estimated migration is one adapter and contract test, with no pipeline rewrite.",
+  "trace_refs": [
+    "TODO_SUCCESS_TRACE",
+    "TODO_FAILURE_TRACE"
+  ],
+  "secret_scan_passed": false,
+  "confirmed_by": []
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sceneguard.local/schemas/asset-profile-input.schema.json",
+  "title": "asset-profile Skill Input 0.1",
+  "type": "object",
+  "required": ["profile"],
+  "properties": {
+    "profile": {"type": "string", "minLength": 1},
+    "purpose": {"type": "string"},
+    "constraints": {"type": "object"}
+  },
+  "additionalProperties": false
+}

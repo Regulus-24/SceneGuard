@@ -1,0 +1,156 @@
+{
+  "schema_version": "0.1",
+  "contract_id": "sceneguard-http-api-v0.1",
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/health",
+      "auth": "public",
+      "function": "Gateway health and version",
+      "future_mcp": "sceneguard.health"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/assets",
+      "auth": "bearer_if_configured",
+      "function": "List GLB files under the configured asset root",
+      "future_mcp": "sceneguard.asset.list"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/assets/content",
+      "auth": "bearer_if_configured",
+      "function": "Stream a validated built-in or uploaded GLB for local preview",
+      "future_mcp": "sceneguard.asset.read"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/profiles",
+      "auth": "bearer_if_configured",
+      "function": "List validated Profile versions",
+      "future_mcp": "sceneguard.profile.list"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/assets/upload",
+      "auth": "bearer_if_configured",
+      "function": "Upload and validate one bounded GLB into the isolated upload store",
+      "future_mcp": "sceneguard.asset.upload"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/tools/asset.audit",
+      "auth": "bearer_if_configured",
+      "function": "Run a read-only deterministic GLB audit",
+      "future_mcp": "sceneguard.asset.audit",
+      "input_schema": "schemas/asset-audit-input.schema.json"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/jobs",
+      "auth": "bearer_if_configured",
+      "function": "Create an isolated Job and initial audit",
+      "future_mcp": "sceneguard.job.create",
+      "input_schema": "schemas/asset-audit-input.schema.json"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/tools/repair.plan",
+      "auth": "bearer_if_configured",
+      "function": "Freeze a profile-bound PatchPlan from an existing Job audit",
+      "future_mcp": "sceneguard.repair.plan",
+      "required_fields": ["job_id", "profile"]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/tools/repair.execute",
+      "auth": "bearer_if_configured",
+      "function": "Execute only the exact frozen plan without verifying or publishing",
+      "future_mcp": "sceneguard.repair.execute",
+      "required_fields": ["job_id", "profile", "plan_id"]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/tools/regression.verify",
+      "auth": "bearer_if_configured",
+      "function": "Independently re-audit and exclusively publish or roll back the candidate",
+      "future_mcp": "sceneguard.regression.verify",
+      "required_fields": ["job_id", "profile", "plan_id"]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/pipeline/run",
+      "auth": "bearer_if_configured",
+      "function": "Run the approval, repair, verification and release/rollback pipeline",
+      "future_mcp": "sceneguard.pipeline.run",
+      "input_schema": "schemas/pipeline-run-input.schema.json",
+      "idempotency_key_supported": true
+    },
+    {
+      "method": "POST",
+      "path": "/v1/pipeline/decide",
+      "auth": "bearer_if_configured",
+      "function": "Approve or reject the exact pending PatchPlan and continue the same Job",
+      "future_mcp": "sceneguard.pipeline.decide",
+      "input_schema": "schemas/pipeline-decision-input.schema.json"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/jobs/{job_id}/artifacts",
+      "auth": "bearer_if_configured",
+      "function": "List safe JSON/JSONL evidence for one Job",
+      "future_mcp": "sceneguard.job.artifacts.list"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/jobs/{job_id}/artifacts/{artifact_id}",
+      "auth": "bearer_if_configured",
+      "function": "Read one bounded JSON/JSONL evidence artifact",
+      "future_mcp": "sceneguard.job.artifact.read"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/jobs/{job_id}/assets/{asset_kind}",
+      "auth": "bearer_if_configured",
+      "function": "Stream the original, working or published GLB for before/after preview",
+      "future_mcp": "sceneguard.job.asset.read"
+    }
+  ],
+  "response_contract": {
+    "request_id_header": "X-Request-ID",
+    "success_envelope": ["ok", "result", "meta"],
+    "error_envelope": ["ok", "error.code", "error.message"],
+    "pipeline_hashes": ["meta.input_sha256", "meta.output_sha256"]
+  },
+  "limits": {
+    "request_body_bytes": 1048576,
+    "upload_body_bytes": 33554432,
+    "artifact_read_bytes": 2097152,
+    "single_gateway_process_per_jobs_root": true,
+    "hard_execution_timeout_implemented": false
+  },
+  "error_codes": [
+    "UNAUTHORIZED",
+    "INVALID_JSON",
+    "INVALID_REQUEST",
+    "INVALID_UPLOAD",
+    "INVALID_FILENAME",
+    "INVALID_ASSET_REF",
+    "INVALID_ASSET_KIND",
+    "INVALID_JOB_ID",
+    "INVALID_ARTIFACT_ID",
+    "UNSUPPORTED_FORMAT",
+    "PATH_OUT_OF_SCOPE",
+    "NOT_FOUND",
+    "REQUEST_TOO_LARGE",
+    "UPLOAD_TOO_LARGE",
+    "ARTIFACT_TOO_LARGE",
+    "INVALID_ARTIFACT",
+    "INVALID_IDEMPOTENCY_KEY",
+    "STAGE_PRECONDITION_FAILED",
+    "IDEMPOTENCY_CONFLICT",
+    "IDEMPOTENCY_IN_PROGRESS",
+    "IDEMPOTENCY_RECEIPT_CORRUPT",
+    "INTERNAL_ERROR"
+  ]
+}

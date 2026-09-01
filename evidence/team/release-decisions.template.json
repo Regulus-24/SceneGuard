@@ -1,0 +1,47 @@
+{
+  "schema_version": "0.1",
+  "status": "TODO_TEAM_CONFIRMATION_ONLY",
+  "project_name": "SceneGuard",
+  "project_name_confirmed": false,
+  "license_spdx": "TODO",
+  "license_file": "LICENSE",
+  "members_confirmed": [],
+  "proposed_members_from_ppt": [
+    {
+      "name": "顾梓洋",
+      "role": "统筹 · 工程化交付",
+      "responsibilities": [
+        "Skill/Schema",
+        "状态与证据管理",
+        "工程化/许可证",
+        "Demo与提交材料"
+      ]
+    },
+    {
+      "name": "刘志豪",
+      "role": "技术架构 · 工具链",
+      "responsibilities": [
+        "总体技术架构",
+        "AgentTeams编排",
+        "HTTP Tool Gateway",
+        "3D确定性核心"
+      ]
+    },
+    {
+      "name": "王峥睿",
+      "role": "评测 · 实验分析",
+      "responsibilities": [
+        "自建样本",
+        "缺陷注入",
+        "Regression Verifier",
+        "指标与实验分析"
+      ]
+    }
+  ],
+  "role_source": "SceneGuard 初赛方案v2.pptx，第14页；仅作待确认草案",
+  "roles_confirmed": false,
+  "public_bios_authorized": false,
+  "public_asset_license_reviewed": false,
+  "confirmed_at": "TODO_ISO8601",
+  "confirmed_by": []
+}

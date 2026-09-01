@@ -1,0 +1,16 @@
+{
+  "profile_id": "web-realtime",
+  "version": "0.1",
+  "description": "Public demo profile for small real-time web GLB assets. Values are SceneGuard demo defaults, not enterprise production thresholds.",
+  "rules": {
+    "max_file_bytes": 1048576,
+    "max_triangles": 1,
+    "max_texture_dimension": 1024,
+    "allow_external_uris": false,
+    "require_embedded_buffers": true
+  },
+  "repair_policy": {
+    "allowed_operations": [],
+    "note": "Repair whitelist is intentionally empty until the technical spike is complete."
+  }
+}
