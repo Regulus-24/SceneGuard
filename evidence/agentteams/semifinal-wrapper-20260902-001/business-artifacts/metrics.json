@@ -1,0 +1,16 @@
+{
+  "schema_version": "0.1",
+  "job_id": "semifinal-wrapper-20260902-001",
+  "gate_state": "REPAIRED_PASS",
+  "end_to_end_duration_ms": 15,
+  "initial_error_count": 1,
+  "initial_warning_count": 0,
+  "repair_attempted": true,
+  "rollback_completed": false,
+  "published": true,
+  "approval_required": false,
+  "approval_decided": false,
+  "trace_event_count": 8,
+  "artifact_file_count": 8,
+  "completed_at": "2026-09-02T08:34:40.321658+00:00"
+}

@@ -18,3 +18,5 @@ reports/*
 .agents/
 .codex/
 .http-demo-jobs/
+.semifinal-demo-jobs/
+!reports/semifinal-demo-smoke-latest.json

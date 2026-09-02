@@ -1,0 +1,113 @@
+{
+  "ok": true,
+  "mode": "worker_run",
+  "agent_id": "repair-planner",
+  "task_id": "semifinal-wrapper-20260902-001-02",
+  "stage": "plan",
+  "skill_ids": [
+    "repair-plan"
+  ],
+  "decision": {
+    "ok": true,
+    "role": "repair-planner",
+    "model": "qwen3.5:4b",
+    "tool": "freeze_patch_plan",
+    "arguments": {
+      "job_id": "semifinal-wrapper-20260902-001",
+      "profile": "web-realtime-v0.5-visual-demo.json"
+    },
+    "attempt_count": 1,
+    "decision_runtime": "inside_agentteams_container",
+    "decision_sha256": "e9835b0ffeaf66e21d0e637f0cd34fd7bba1b3222be7a6a1b3614920717bc173"
+  },
+  "tool_result": {
+    "ok": true,
+    "result": {
+      "job_id": "semifinal-wrapper-20260902-001",
+      "stage": "PLANNED",
+      "replayed": false,
+      "patch_plan": {
+        "schema_version": "0.1",
+        "plan_id": "plan-5e2dfdbb6266",
+        "asset_sha256": "8ddb8dfe88f07ecafed83619aaf736841ab47383d4d8ba16a3a13e537eaf1d55",
+        "profile": {
+          "id": "web-realtime",
+          "version": "0.5-visual-demo"
+        },
+        "state": "READY",
+        "steps": [
+          {
+            "step_id": "step-001",
+            "finding_ids": [
+              "f-0001"
+            ],
+            "skill": "mesh-safe-repair",
+            "operation": "remove_degenerate_triangles",
+            "parameters": {
+              "primitive_mode": "TRIANGLES",
+              "preserve_buffer_layout": true
+            },
+            "expected_changes": [
+              "degenerate_triangle_count -> 0",
+              "index accessor count decreases or stays equal"
+            ],
+            "verify_rules": [
+              "mesh.degenerate_triangles",
+              "package.bounds",
+              "package.references",
+              "profile.budgets"
+            ],
+            "risk_level": "L1",
+            "rollback_on": [
+              "tool_error",
+              "target_unresolved",
+              "new_error_finding",
+              "checks_incomplete"
+            ]
+          }
+        ],
+        "risk_level": "L1",
+        "approval_required": false,
+        "reason": "all ERROR findings map to the tested L1 repair whitelist",
+        "created_at": "2026-09-02T08:34:19.821480+00:00"
+      }
+    },
+    "meta": {
+      "request_id": "req-b0f4da1a228349e5addc15d80f58dd1a",
+      "input_sha256": "056fc3cff2ebf6009b8373f5bd247e6edef88480dccbb13da5f83a4b4816b636",
+      "output_sha256": "833b575da08792fb5e09de295381d297f11f9f873903f77c186ac4f3658fd19d"
+    }
+  },
+  "tool_result_sha256": "2ace6ce5bd8702a86ace1ce60094cd06191f8832e16e02f666b735a76cf34df8",
+  "submitted": {
+    "ok": true,
+    "action": "submit_task",
+    "task": {
+      "task_id": "semifinal-wrapper-20260902-001-02",
+      "project_id": "semifinal-wrapper-20260902-001",
+      "task_title": "Freeze Profile-bound repair plan",
+      "assigned_to": "sgauto-repair-planner",
+      "room_id": "room:!hBkcVV9fSCyavvO9as:matrix-local.hiclaw.io:18080",
+      "status": "submitted",
+      "depends_on": [
+        "semifinal-wrapper-20260902-001-01"
+      ],
+      "assigned_at": "2026-09-02T08:34:11Z",
+      "acknowledged_at": "2026-09-02T08:34:15Z",
+      "submitted_at": "2026-09-02T08:34:19Z"
+    },
+    "synced": true,
+    "verified": true,
+    "result": {
+      "status": "SUCCESS",
+      "summary": "repair-planner completed plan with validated machine evidence.",
+      "deliverables": [
+        "shared/tasks/semifinal-wrapper-20260902-001-02/workspace/tool-result.json",
+        "shared/tasks/semifinal-wrapper-20260902-001-02/workspace/skill-usage.json"
+      ],
+      "notes": [
+        "skills=repair-plan"
+      ]
+    }
+  }
+}

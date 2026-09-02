@@ -1,0 +1,44 @@
+{
+  "schema_version": "0.1",
+  "job_id": "semifinal-wrapper-20260902-001",
+  "asset": {
+    "path": "C:\\Users\\Administrator\\Desktop\\Agent infra\\Agent比赛\\Agent比赛\\sceneguard\\jobs\\semifinal-wrapper-20260902-001\\working\\candidate.glb",
+    "sha256": "766c9476dcd62a96b604b86719f08ec025d55f3daac69e551cef04d58b293169"
+  },
+  "profile": {
+    "id": "web-realtime",
+    "version": "0.5-visual-demo"
+  },
+  "measurements": {
+    "file_bytes": 672,
+    "bin_bytes": 60,
+    "scene_count": 1,
+    "node_count": 1,
+    "mesh_count": 1,
+    "primitive_count": 1,
+    "material_count": 0,
+    "texture_count": 0,
+    "image_count": 0,
+    "degenerate_triangle_count": 0,
+    "non_finite_position_count": 0,
+    "triangle_count": 1,
+    "embedded_image_dimensions": [],
+    "max_texture_dimension": 0
+  },
+  "findings": [],
+  "checks_completed": [
+    "package.valid_glb",
+    "package.single_file",
+    "package.bounds",
+    "package.references",
+    "mesh.geometry",
+    "profile.budgets"
+  ],
+  "checks_incomplete": [],
+  "summary": {
+    "gate_state": "PASS",
+    "error_count": 0,
+    "warning_count": 0
+  },
+  "created_at": "2026-09-02T08:34:40.316509+00:00"
+}

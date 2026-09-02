@@ -1,0 +1,19 @@
+{
+  "ok": true,
+  "mode": "leader_accept",
+  "agent_id": "scene-guard-leader",
+  "accepted_task_id": "semifinal-wrapper-20260902-001-04",
+  "checked_result": {
+    "status": "SUCCESS",
+    "summary": "regression-verifier completed verify with validated machine evidence.",
+    "deliverables": [
+      "shared/tasks/semifinal-wrapper-20260902-001-04/workspace/tool-result.json",
+      "shared/tasks/semifinal-wrapper-20260902-001-04/workspace/skill-usage.json"
+    ],
+    "notes": [
+      "skills=package-audit,mesh-validate,regression-verify"
+    ]
+  },
+  "ready_nodes": [],
+  "delegated_task": null
+}

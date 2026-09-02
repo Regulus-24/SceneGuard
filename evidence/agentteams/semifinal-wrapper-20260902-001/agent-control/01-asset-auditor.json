@@ -1,0 +1,71 @@
+{
+  "ok": true,
+  "mode": "worker_run",
+  "agent_id": "asset-auditor",
+  "task_id": "semifinal-wrapper-20260902-001-01",
+  "stage": "create",
+  "skill_ids": [
+    "package-audit",
+    "mesh-validate"
+  ],
+  "decision": {
+    "ok": true,
+    "role": "asset-auditor",
+    "model": "qwen3.5:4b",
+    "tool": "create_scene_job",
+    "arguments": {
+      "job_id": "semifinal-wrapper-20260902-001",
+      "profile": "web-realtime-v0.5-visual-demo.json",
+      "asset": "mixed_valid_degenerate.glb"
+    },
+    "attempt_count": 1,
+    "decision_runtime": "inside_agentteams_container",
+    "decision_sha256": "0f4303ddb1b6be65a077bc4b5df236fe33dc6de0520e67f042134978fc46dfa0"
+  },
+  "tool_result": {
+    "ok": true,
+    "result": {
+      "job_id": "semifinal-wrapper-20260902-001",
+      "gate_state": "REJECTED",
+      "artifacts": {
+        "audit_report": "semifinal-wrapper-20260902-001/artifacts/audit_report.json",
+        "trace": "semifinal-wrapper-20260902-001/artifacts/trace.jsonl"
+      }
+    },
+    "meta": {
+      "request_id": "req-c0290bc3396b4db185be5ec3329aca4b",
+      "input_sha256": "fbf60ab596681acd07d022771ee34f5d90874499e81708bc3ee09c2baed8aded",
+      "output_sha256": "e6740e80cdbb02bc23ce0a1d45cce88dd9b1e42ece1c83ca995d2fab2337fed7"
+    }
+  },
+  "tool_result_sha256": "b9a61a8f050b39bc5813ba8030bddd9f825949650624b21c102622ad3aee1b07",
+  "submitted": {
+    "ok": true,
+    "action": "submit_task",
+    "task": {
+      "task_id": "semifinal-wrapper-20260902-001-01",
+      "project_id": "semifinal-wrapper-20260902-001",
+      "task_title": "Audit package and mesh",
+      "assigned_to": "sgauto-asset-auditor",
+      "room_id": "room:!hBkcVV9fSCyavvO9as:matrix-local.hiclaw.io:18080",
+      "status": "submitted",
+      "depends_on": [],
+      "assigned_at": "2026-09-02T08:33:03Z",
+      "acknowledged_at": "2026-09-02T08:33:08Z",
+      "submitted_at": "2026-09-02T08:34:08Z"
+    },
+    "synced": true,
+    "verified": true,
+    "result": {
+      "status": "SUCCESS",
+      "summary": "asset-auditor completed create with validated machine evidence.",
+      "deliverables": [
+        "shared/tasks/semifinal-wrapper-20260902-001-01/workspace/tool-result.json",
+        "shared/tasks/semifinal-wrapper-20260902-001-01/workspace/skill-usage.json"
+      ],
+      "notes": [
+        "skills=package-audit,mesh-validate"
+      ]
+    }
+  }
+}

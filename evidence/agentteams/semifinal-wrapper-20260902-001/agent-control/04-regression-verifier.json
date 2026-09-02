@@ -1,0 +1,102 @@
+{
+  "ok": true,
+  "mode": "worker_run",
+  "agent_id": "regression-verifier",
+  "task_id": "semifinal-wrapper-20260902-001-04",
+  "stage": "verify",
+  "skill_ids": [
+    "package-audit",
+    "mesh-validate",
+    "regression-verify"
+  ],
+  "decision": {
+    "ok": true,
+    "role": "regression-verifier",
+    "model": "qwen3.5:4b",
+    "tool": "verify_and_finalize",
+    "arguments": {
+      "job_id": "semifinal-wrapper-20260902-001",
+      "profile": "web-realtime-v0.5-visual-demo.json",
+      "plan_id": "plan-5e2dfdbb6266"
+    },
+    "attempt_count": 1,
+    "decision_runtime": "inside_agentteams_container",
+    "decision_sha256": "da864c752429b8e0246c946e7e5bdf1bfb5f414422f871abe2c9e73f07e7a282"
+  },
+  "tool_result": {
+    "ok": true,
+    "result": {
+      "job_id": "semifinal-wrapper-20260902-001",
+      "stage": "FINALIZED",
+      "replayed": false,
+      "decision": {
+        "schema_version": "0.1",
+        "job_id": "semifinal-wrapper-20260902-001",
+        "gate_state": "REPAIRED_PASS",
+        "reason": "independent regression verification passed",
+        "original_sha256": "8ddb8dfe88f07ecafed83619aaf736841ab47383d4d8ba16a3a13e537eaf1d55",
+        "working_sha256": "766c9476dcd62a96b604b86719f08ec025d55f3daac69e551cef04d58b293169",
+        "published": true,
+        "release": {
+          "schema_version": "0.1",
+          "job_id": "semifinal-wrapper-20260902-001",
+          "gate_state": "REPAIRED_PASS",
+          "profile": "web-realtime@0.5-visual-demo",
+          "original_sha256": "8ddb8dfe88f07ecafed83619aaf736841ab47383d4d8ba16a3a13e537eaf1d55",
+          "published_sha256": "766c9476dcd62a96b604b86719f08ec025d55f3daac69e551cef04d58b293169",
+          "published_path": "published/asset.glb",
+          "regression_report": "artifacts/regression_report.json",
+          "published_at": "2026-09-02T08:34:40.319586+00:00"
+        },
+        "rollback": null,
+        "artifacts": {
+          "audit_report": "artifacts/audit_report.json",
+          "patch_plan": "artifacts/patch_plan.json",
+          "trace": "artifacts/trace.jsonl",
+          "gate_decision": "artifacts/gate_decision.json",
+          "metrics": "artifacts/metrics.json",
+          "approval_request": null,
+          "approval_record": null
+        },
+        "completed_at": "2026-09-02T08:34:40.320627+00:00"
+      }
+    },
+    "meta": {
+      "request_id": "req-54fbee7e113a45b8ba9b0b629fd21f39",
+      "input_sha256": "88a5746cfb646e23e5949a9535bfcfd134b64f95266d73d13903af025cec309e",
+      "output_sha256": "67ff372af599e53cab690cb6a1c07fac1c58adb90d541f41eeaa9c38cac48560"
+    }
+  },
+  "tool_result_sha256": "4fa351a5516482865491a964c9f5440e6e223154ef140a02b4b69ca6f6992e3b",
+  "submitted": {
+    "ok": true,
+    "action": "submit_task",
+    "task": {
+      "task_id": "semifinal-wrapper-20260902-001-04",
+      "project_id": "semifinal-wrapper-20260902-001",
+      "task_title": "Independently verify and finalize",
+      "assigned_to": "sgauto-regression-verifier",
+      "room_id": "room:!hBkcVV9fSCyavvO9as:matrix-local.hiclaw.io:18080",
+      "status": "submitted",
+      "depends_on": [
+        "semifinal-wrapper-20260902-001-03"
+      ],
+      "assigned_at": "2026-09-02T08:34:31Z",
+      "acknowledged_at": "2026-09-02T08:34:33Z",
+      "submitted_at": "2026-09-02T08:34:40Z"
+    },
+    "synced": true,
+    "verified": true,
+    "result": {
+      "status": "SUCCESS",
+      "summary": "regression-verifier completed verify with validated machine evidence.",
+      "deliverables": [
+        "shared/tasks/semifinal-wrapper-20260902-001-04/workspace/tool-result.json",
+        "shared/tasks/semifinal-wrapper-20260902-001-04/workspace/skill-usage.json"
+      ],
+      "notes": [
+        "skills=package-audit,mesh-validate,regression-verify"
+      ]
+    }
+  }
+}

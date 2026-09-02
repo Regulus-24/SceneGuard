@@ -49,6 +49,7 @@ INCLUDED_FIXED_JOB_DIRECTORIES = (
 INCLUDED_FIXED_REPORT_FILES = (
     "reports/agentteams-stability-latest.json",
     "reports/public-asset-sync-latest.json",
+    "reports/semifinal-demo-smoke-latest.json",
 )
 IGNORED_PARTS = {"__pycache__", ".pytest_cache"}
 IGNORED_DIRECTORY_SUFFIXES = {".egg-info", ".dist-info"}

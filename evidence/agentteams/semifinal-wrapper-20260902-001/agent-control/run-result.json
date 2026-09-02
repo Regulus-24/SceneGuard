@@ -1,0 +1,131 @@
+{
+  "schema_version": "0.2",
+  "run_id": "semifinal-wrapper-20260902-001",
+  "job_id": "semifinal-wrapper-20260902-001",
+  "project_id": "semifinal-wrapper-20260902-001",
+  "team": "sceneguard-auto-v1",
+  "mode": "five AgentTeams containers with validated zero-operator supervisor",
+  "agent_count": 5,
+  "worker_count": 4,
+  "operator_actions_after_dispatch": 0,
+  "status": "COMPLETED",
+  "gate_state": "REPAIRED_PASS",
+  "plan_id": "plan-5e2dfdbb6266",
+  "leader": {
+    "agent_id": "scene-guard-leader",
+    "container": "hiclaw-worker-sceneguard-auto-v1-leader",
+    "model": "qwen3.5:9b",
+    "skills": [
+      "asset-profile"
+    ],
+    "native_tool_call": "coordinate_agentteams_project",
+    "decision_sha256": "16c69712d868c942d1783bb2dbb25a331dc80b49fb80647329c4d8fd81c03e40",
+    "projectflow_created": true,
+    "taskflow_acceptances": 4
+  },
+  "tasks": [
+    {
+      "agent_id": "asset-auditor",
+      "runtime_name": "sgauto-asset-auditor",
+      "container": "hiclaw-worker-sgauto-asset-auditor",
+      "model": "qwen3.5:4b",
+      "task_id": "semifinal-wrapper-20260902-001-01",
+      "skills": [
+        "package-audit",
+        "mesh-validate"
+      ],
+      "native_tool_call": "create_scene_job",
+      "decision_sha256": "0f4303ddb1b6be65a077bc4b5df236fe33dc6de0520e67f042134978fc46dfa0",
+      "tool_result_sha256": "b9a61a8f050b39bc5813ba8030bddd9f825949650624b21c102622ad3aee1b07"
+    },
+    {
+      "agent_id": "repair-planner",
+      "runtime_name": "sgauto-repair-planner",
+      "container": "hiclaw-worker-sgauto-repair-planner",
+      "model": "qwen3.5:4b",
+      "task_id": "semifinal-wrapper-20260902-001-02",
+      "skills": [
+        "repair-plan"
+      ],
+      "native_tool_call": "freeze_patch_plan",
+      "decision_sha256": "e9835b0ffeaf66e21d0e637f0cd34fd7bba1b3222be7a6a1b3614920717bc173",
+      "tool_result_sha256": "2ace6ce5bd8702a86ace1ce60094cd06191f8832e16e02f666b735a76cf34df8"
+    },
+    {
+      "agent_id": "repair-executor",
+      "runtime_name": "sgauto-repair-executor",
+      "container": "hiclaw-worker-sgauto-repair-executor",
+      "model": "qwen3.5:4b",
+      "task_id": "semifinal-wrapper-20260902-001-03",
+      "skills": [
+        "mesh-safe-repair"
+      ],
+      "native_tool_call": "execute_frozen_plan",
+      "decision_sha256": "8bdd8ee749028fa71c985f6f9e13f8f77c254b36d8157b3f25913b72da3e4e50",
+      "tool_result_sha256": "6acbd5ce012f588605f6239a7ac3f53e604b506f59b0d26b04c8c9873c1c1330"
+    },
+    {
+      "agent_id": "regression-verifier",
+      "runtime_name": "sgauto-regression-verifier",
+      "container": "hiclaw-worker-sgauto-regression-verifier",
+      "model": "qwen3.5:4b",
+      "task_id": "semifinal-wrapper-20260902-001-04",
+      "skills": [
+        "package-audit",
+        "mesh-validate",
+        "regression-verify"
+      ],
+      "native_tool_call": "verify_and_finalize",
+      "decision_sha256": "da864c752429b8e0246c946e7e5bdf1bfb5f414422f871abe2c9e73f07e7a282",
+      "tool_result_sha256": "4fa351a5516482865491a964c9f5440e6e223154ef140a02b4b69ca6f6992e3b"
+    }
+  ],
+  "skill_ids": [
+    "asset-profile",
+    "mesh-safe-repair",
+    "mesh-validate",
+    "package-audit",
+    "regression-verify",
+    "repair-plan"
+  ],
+  "invariants": {
+    "passed": true,
+    "checks": {
+      "plan_id_frozen": true,
+      "execution_to_regression_hash": true,
+      "gate_agrees": true,
+      "published_hash_agrees": true,
+      "terminal_repaired_pass": true
+    }
+  },
+  "artifact_hashes": {
+    "audit_report.json": "0526c0c77f44d7e5a271cf71046d977f7a30388024a3ab9294f3cf52083fc93e",
+    "execution_report.json": "b9156e717ef64532f488f2dfc0b78a4cd9fdfbd6f35071803504c09e0a7fd842",
+    "gate_decision.json": "fc2ac1cdb7ea48bce24dbaf166fc87b61a6bb7e9ed14acdc7b33c7c520d98622",
+    "metrics.json": "eb489b5b110c90b83b2dbd8513f499d2a254e9c4e882363baca762552c7ef425",
+    "patch_plan.json": "59dfd69d43dac29b26a8870bc732fa64d1f442e1b7cc006d464bdb7532a6e504",
+    "regression_audit.json": "139231bcca52db297c8a578d992986b03000d940bf0ce111f455070c2ef9e61a",
+    "regression_report.json": "4d10d266355b5572fb0a1045fb39edaa521909dac09971b732028fc6a77ea6d9",
+    "release_attestation.json": "9138b8201c35a8f6db5e09f748237ee822c8cdf82fc1ebe2dfe3fb77158a1640",
+    "trace.jsonl": "514ae0069ae6dd1aab8ea5d538e3a990164a2d95215e767aa5b50bb90400da25"
+  },
+  "business_metrics": {
+    "schema_version": "0.1",
+    "job_id": "semifinal-wrapper-20260902-001",
+    "gate_state": "REPAIRED_PASS",
+    "end_to_end_duration_ms": 15,
+    "initial_error_count": 1,
+    "initial_warning_count": 0,
+    "repair_attempted": true,
+    "rollback_completed": false,
+    "published": true,
+    "approval_required": false,
+    "approval_decided": false,
+    "trace_event_count": 8,
+    "artifact_file_count": 8,
+    "completed_at": "2026-09-02T08:34:40.321658+00:00"
+  },
+  "duration_ms": 322312,
+  "completed_at": "2026-09-02T08:34:42.078480+00:00",
+  "claim_boundary": "Validated five-Agent Supervisor mode: all five model decisions and business actions ran inside AgentTeams containers; the host enforced the finite state machine. This is not claimed as free-form native Matrix orchestration."
+}

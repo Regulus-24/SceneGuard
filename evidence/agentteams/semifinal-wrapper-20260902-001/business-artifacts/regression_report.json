@@ -1,0 +1,22 @@
+{
+  "schema_version": "0.1",
+  "original_sha256": "8ddb8dfe88f07ecafed83619aaf736841ab47383d4d8ba16a3a13e537eaf1d55",
+  "candidate_sha256": "766c9476dcd62a96b604b86719f08ec025d55f3daac69e551cef04d58b293169",
+  "target_rules": [
+    "mesh.degenerate_triangles",
+    "package.bounds",
+    "package.references",
+    "profile.budgets"
+  ],
+  "resolved_target_rules": [
+    "mesh.degenerate_triangles",
+    "package.bounds",
+    "package.references",
+    "profile.budgets"
+  ],
+  "unresolved_target_rules": [],
+  "new_error_findings": [],
+  "required_checks_complete": true,
+  "repair_attempted": true,
+  "gate_state": "REPAIRED_PASS"
+}

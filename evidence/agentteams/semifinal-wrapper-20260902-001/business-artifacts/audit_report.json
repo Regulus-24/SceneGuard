@@ -1,0 +1,65 @@
+{
+  "schema_version": "0.1",
+  "job_id": "semifinal-wrapper-20260902-001",
+  "asset": {
+    "path": "C:\\Users\\Administrator\\Desktop\\Agent infra\\Agent比赛\\Agent比赛\\sceneguard\\jobs\\semifinal-wrapper-20260902-001\\working\\candidate.glb",
+    "sha256": "8ddb8dfe88f07ecafed83619aaf736841ab47383d4d8ba16a3a13e537eaf1d55"
+  },
+  "profile": {
+    "id": "web-realtime",
+    "version": "0.5-visual-demo"
+  },
+  "measurements": {
+    "file_bytes": 672,
+    "bin_bytes": 60,
+    "scene_count": 1,
+    "node_count": 1,
+    "mesh_count": 1,
+    "primitive_count": 1,
+    "material_count": 0,
+    "texture_count": 0,
+    "image_count": 0,
+    "degenerate_triangle_count": 1,
+    "non_finite_position_count": 0,
+    "triangle_count": 2,
+    "embedded_image_dimensions": [],
+    "max_texture_dimension": 0
+  },
+  "findings": [
+    {
+      "finding_id": "f-0001",
+      "rule_id": "mesh.degenerate_triangles",
+      "severity": "ERROR",
+      "message": "mesh contains zero-area or repeated-index triangles",
+      "location": {},
+      "observed": 1,
+      "expected": 0,
+      "evidence": {
+        "locations": [
+          {
+            "mesh": 0,
+            "primitive": 0,
+            "triangle": 1
+          }
+        ]
+      },
+      "repairability": "AUTO_CANDIDATE",
+      "confidence": 1.0
+    }
+  ],
+  "checks_completed": [
+    "package.valid_glb",
+    "package.single_file",
+    "package.bounds",
+    "package.references",
+    "mesh.geometry",
+    "profile.budgets"
+  ],
+  "checks_incomplete": [],
+  "summary": {
+    "gate_state": "REJECTED",
+    "error_count": 1,
+    "warning_count": 0
+  },
+  "created_at": "2026-09-02T08:34:08.951062+00:00"
+}

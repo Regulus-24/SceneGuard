@@ -18,18 +18,19 @@
 - [x] 高风险操作 L2 人工确认、故障回滚与完整审计。
 - [x] 完整端到端证据链与可复现代码包。
 - [x] 跨行业迁移路径及当前真实开源资产来源。
-- [ ] 公开在线 Demo 环境，或不超过 8 分钟的备用演示视频。
-- [ ] 最终上传后的平台可访问性与匿名下载复核。
+- [x] 本地可运行 Demo：Quick 模式 + 完整五 Agent 模式 + 不可变证据路径。
+- [ ] 向组委会确认提交入口所称 Demo 是否必须是公开在线地址；若必须，本地 Demo 不能替代。
+- [ ] 最终上传后的平台可访问性复核；采用平台 ZIP 提交时不要求 GitHub 仓库公开。
 
 ## 三、团队必须一次确认的事项
 
-1. 主讲人、现场 Demo 操作人、最终上传人、视频录制/剪辑人及各自备份。
+1. 主讲人、现场 Demo 操作人、最终上传人及各自备份。
 2. L2 审批演示是否继续使用公开角色 `asset-quality-reviewer`，以及现场由谁点击批准。
 3. 是否能完成 3 人 × 3 次人工业务基线；不能完成则只报告 Agent 自动侧指标，不声明 ROI 或节省比例。
 
 ## 四、已锁定口径
 
-- 公开仓库：`Regulus-24/SceneGuard`，默认分支 `main`。
+- 代码仓库：`Regulus-24/SceneGuard`，默认分支 `main`，当前保持 Private；复赛以平台 ZIP 或评委可访问链接交付。
 - 项目许可证：Apache-2.0；第三方 Khronos 资产保留 CC0-1.0 和原作者/来源信息。
 - 主 Demo：`mixed_valid_degenerate.glb` + `web-realtime-v0.5-visual-demo.json`。
 - AgentTeams：经验证的五 Agent 零人工 Supervisor 模式；不冒充自由式 Matrix 原生编排。
@@ -48,4 +49,4 @@ python scripts/build_submission_manifest.py --archive reports/sceneguard-submiss
 python scripts/build_submission_manifest.py --verify-archive reports/sceneguard-submission.zip
 ```
 
-只有全部通过且 PPT、PDF、代码包与视频/在线环境都能由未登录或评委身份访问时，才允许上传。
+只有全部通过且 PPT、PDF、代码包与 Demo 交付方式符合组委会最终口径时，才允许上传。

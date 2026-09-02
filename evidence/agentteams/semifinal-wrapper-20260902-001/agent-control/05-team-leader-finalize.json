@@ -1,0 +1,19 @@
+{
+  "ok": true,
+  "mode": "leader_finalize",
+  "agent_id": "scene-guard-leader",
+  "project": {
+    "project_id": "semifinal-wrapper-20260902-001",
+    "title": "SceneGuard semifinal zero-operator five-Agent run",
+    "status": "completed",
+    "source": "semifinal-wrapper-20260902-001",
+    "requester": "@manager:matrix-local.hiclaw.io:18080",
+    "parent_task_id": null,
+    "created_at": "2026-09-02T08:33:03Z"
+  },
+  "result_sha256": "4ae3ad1d71c5dae93783e071998fae35ab1d090d00580c18746d0b51af5d0a98",
+  "project_result_paths": [
+    "shared/projects/semifinal-wrapper-20260902-001/result.json",
+    "shared/projects/semifinal-wrapper-20260902-001/result.md"
+  ]
+}

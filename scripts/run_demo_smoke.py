@@ -148,7 +148,7 @@ def run_smoke(base_url: str, *, timeout: float = 10) -> dict:
         "job_id": job_id,
         "duration_ms": round((time.monotonic() - started) * 1000),
         "checks": checks,
-        "next_action": "Open the demo UI and record the fixed workflow." if passed else "Fix failed checks before recording.",
+        "next_action": "Open the demo UI and rehearse the fixed workflow." if passed else "Fix failed checks before rehearsal.",
     }
 
 
@@ -166,7 +166,7 @@ def main() -> int:
             "status": "FAIL",
             "base_url": args.base_url,
             "error": f"{type(exc).__name__}: {exc}",
-            "next_action": "Start the demo with scripts/start_initial_demo.ps1, then retry.",
+            "next_action": "Start the demo with scripts/start_semifinal_demo.ps1, then retry.",
         }
     if args.output:
         output = args.output if args.output.is_absolute() else ROOT / args.output

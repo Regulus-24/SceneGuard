@@ -1,0 +1,31 @@
+{
+  "schema_version": "0.1",
+  "job_id": "semifinal-wrapper-20260902-001",
+  "gate_state": "REPAIRED_PASS",
+  "reason": "independent regression verification passed",
+  "original_sha256": "8ddb8dfe88f07ecafed83619aaf736841ab47383d4d8ba16a3a13e537eaf1d55",
+  "working_sha256": "766c9476dcd62a96b604b86719f08ec025d55f3daac69e551cef04d58b293169",
+  "published": true,
+  "release": {
+    "schema_version": "0.1",
+    "job_id": "semifinal-wrapper-20260902-001",
+    "gate_state": "REPAIRED_PASS",
+    "profile": "web-realtime@0.5-visual-demo",
+    "original_sha256": "8ddb8dfe88f07ecafed83619aaf736841ab47383d4d8ba16a3a13e537eaf1d55",
+    "published_sha256": "766c9476dcd62a96b604b86719f08ec025d55f3daac69e551cef04d58b293169",
+    "published_path": "published/asset.glb",
+    "regression_report": "artifacts/regression_report.json",
+    "published_at": "2026-09-02T08:34:40.319586+00:00"
+  },
+  "rollback": null,
+  "artifacts": {
+    "audit_report": "artifacts/audit_report.json",
+    "patch_plan": "artifacts/patch_plan.json",
+    "trace": "artifacts/trace.jsonl",
+    "gate_decision": "artifacts/gate_decision.json",
+    "metrics": "artifacts/metrics.json",
+    "approval_request": null,
+    "approval_record": null
+  },
+  "completed_at": "2026-09-02T08:34:40.320627+00:00"
+}
