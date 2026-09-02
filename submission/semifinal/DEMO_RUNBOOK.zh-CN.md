@@ -66,6 +66,6 @@ powershell -ExecutionPolicy Bypass -File scripts/start_semifinal_demo.ps1 -Mode 
 - 模型或 Docker 异常：不要在一分钟 Demo 中排障，直接打开已验证 Run 的 `run-result.json` 和 Artifact，说明这是同一脚本产生的不可变证据。
 - UI 异常：用 `reports/semifinal-demo-smoke-latest.json` 展示八项检查结果。
 
-## 五、规则边界
+## 五、交付方式
 
-本包已满足“本地可运行、可复现、可验证”。若提交入口把“Demo”严格限定为无需评委部署的公开在线地址，本地 Demo 不能自行等同，需按组委会最终口径补充可访问环境。
+团队已锁定由评委下载代码包后本地运行 Demo；不部署公开在线地址，不制作演示视频。提交包保留一键启动器、依赖说明、冒烟报告和真实五 Agent 不可变证据。

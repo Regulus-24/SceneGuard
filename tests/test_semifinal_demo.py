@@ -24,7 +24,7 @@ class SemifinalDemoTests(unittest.TestCase):
         self.assertIn("semifinal-live-20260902-001", runbook)
         self.assertIn("REPAIRED_PASS", runbook)
         self.assertIn("jobs/.agentteams-native/<run-id>/run-result.json", runbook)
-        self.assertIn("公开在线地址", runbook)
+        self.assertIn('评委下载代码包后本地运行 Demo', runbook)
 
     def test_verified_demo_evidence_is_packaged(self) -> None:
         evidence = ROOT / "evidence" / "agentteams" / "semifinal-wrapper-20260902-001"
